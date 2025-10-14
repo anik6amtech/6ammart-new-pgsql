@@ -23,7 +23,7 @@ class DashboardController extends Controller
 
     public function __construct()
     {
-        DB::statement("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
+        // DB::statement("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));");
     }
 
     /**
@@ -32,7 +32,7 @@ class DashboardController extends Controller
      */
     public function dashboard(Request $request): Application|Factory|View|RedirectResponse|JsonResponse
     {
-//        dd($request->all(), auth('admin')->user()->email);
+        //        dd($request->all(), auth('admin')->user()->email);
         $zone_id = $request->get('zone_id', 'all');
         $statistics_type = $request->get('statistics_type', 'all');
         $statistics_chart_type = $request->get('statistics_chart_type', 'all');
@@ -88,22 +88,22 @@ class DashboardController extends Controller
                 'delivery_statistics' => view('rental::admin.partials.delivery-statistics', compact('pendingCount', 'confirmedCount', 'ongoingCount', 'completedCount', 'canceledCount', 'totalCount'))->render(),
                 'top_providers' => view('rental::admin.partials.top-providers', compact('topProviders'))->render(),
                 'top_customers' => view('rental::admin.partials.top-customers', compact('topCustomers'))->render(),
-                'sale_chart' => view('rental::admin.partials.sale-chart', compact('total_sell', 'commission', 'total_subs','label'))->render(),
+                'sale_chart' => view('rental::admin.partials.sale-chart', compact('total_sell', 'commission', 'total_subs', 'label'))->render(),
                 'by_trip_type' => view('rental::admin.partials.by-trip-type', compact('hourlyCount', 'distanceWiseCount', 'totalCount'))->render(),
                 'zoneName' => $zoneName,
                 'hourlyCount' => $hourlyCount,
                 'distanceWiseCount' => $distanceWiseCount,
                 'totalCount' => $totalCount,
-                'total_sell' => array_map(function($val) {
+                'total_sell' => array_map(function ($val) {
                     return number_format((float)$val, 2, '.', '');
                 }, array_values($total_sell)),
-                'commission' => array_map(function($val) {
+                'commission' => array_map(function ($val) {
                     return number_format((float)$val, 2, '.', '');
                 }, array_values($commission)),
-                'total_subs' => array_map(function($val) {
+                'total_subs' => array_map(function ($val) {
                     return number_format((float)$val, 2, '.', '');
                 }, array_values($total_subs)),
-            'labels' => array_map(function($val) {
+                'labels' => array_map(function ($val) {
                     return trim($val, '"');
                 }, $label),
                 'grossEarning' => number_format((float)$grossEarning, 2, '.', '')
@@ -118,7 +118,14 @@ class DashboardController extends Controller
             'canceledCount',
             'totalCount',
             'zoneName',
-            'total_sell', 'commission', 'total_subs', 'topCustomers', 'topProviders', 'label', 'distanceWiseCount', 'hourlyCount'
+            'total_sell',
+            'commission',
+            'total_subs',
+            'topCustomers',
+            'topProviders',
+            'label',
+            'distanceWiseCount',
+            'hourlyCount'
         ));
     }
 
@@ -175,19 +182,19 @@ class DashboardController extends Controller
         return response()->json([
             'view' => view('rental::admin.partials.sale-chart', compact('total_sell', 'commission', 'total_subs', 'label', 'grossEarning'))->render(),
             'grossEarning' => $grossEarning,
-            'total_sell' => array_map(function($val) {
+            'total_sell' => array_map(function ($val) {
                 return number_format((float)$val, 2, '.', '');
             }, array_values($total_sell)),
-            'commission' => array_map(function($val) {
+            'commission' => array_map(function ($val) {
                 return number_format((float)$val, 2, '.', '');
             }, array_values($commission)),
-            'total_subs' => array_map(function($val) {
+            'total_subs' => array_map(function ($val) {
                 return number_format((float)$val, 2, '.', '');
             }, array_values($total_subs)),
-           'labels' => array_map(function($val) {
+            'labels' => array_map(function ($val) {
                 return trim($val, '"');
             }, $label)
-                ], 200);
+        ], 200);
     }
     public function dashboard_data($request)
     {
@@ -220,27 +227,27 @@ class DashboardController extends Controller
 
         // custom filtering for bar chart
         $months = array(
-            '"'.translate('Jan').'"',
-            '"'.translate('Feb').'"',
-            '"'.translate('Mar').'"',
-            '"'.translate('Apr').'"',
-            '"'.translate('May').'"',
-            '"'.translate('Jun').'"',
-            '"'.translate('Jul').'"',
-            '"'.translate('Aug').'"',
-            '"'.translate('Sep').'"',
-            '"'.translate('Oct').'"',
-            '"'.translate('Nov').'"',
-            '"'.translate('Dec').'"'
+            '"' . translate('Jan') . '"',
+            '"' . translate('Feb') . '"',
+            '"' . translate('Mar') . '"',
+            '"' . translate('Apr') . '"',
+            '"' . translate('May') . '"',
+            '"' . translate('Jun') . '"',
+            '"' . translate('Jul') . '"',
+            '"' . translate('Aug') . '"',
+            '"' . translate('Sep') . '"',
+            '"' . translate('Oct') . '"',
+            '"' . translate('Nov') . '"',
+            '"' . translate('Dec') . '"'
         );
         $days = array(
-            '"'.translate('Mon').'"',
-            '"'.translate('Tue').'"',
-            '"'.translate('Wed').'"',
-            '"'.translate('Thu').'"',
-            '"'.translate('Fri').'"',
-            '"'.translate('Sat').'"',
-            '"'.translate('Sun').'"',
+            '"' . translate('Mon') . '"',
+            '"' . translate('Tue') . '"',
+            '"' . translate('Wed') . '"',
+            '"' . translate('Thu') . '"',
+            '"' . translate('Fri') . '"',
+            '"' . translate('Sat') . '"',
+            '"' . translate('Sun') . '"',
         );
         $total_sell = [];
         $commission = [];
@@ -249,8 +256,8 @@ class DashboardController extends Controller
             case "this_year":
                 for ($i = 1; $i <= 12; $i++) {
                     $total_sell[$i] = TripTransaction::when(is_numeric($request['module_id']), function ($q) use ($request) {
-                            return $q->where('module_id', $request['module_id']);
-                        })
+                        return $q->where('module_id', $request['module_id']);
+                    })
                         ->when(is_numeric($request['zone_id']), function ($q) use ($request) {
                             return $q->where('zone_id', $request['zone_id']);
                         })
@@ -258,21 +265,21 @@ class DashboardController extends Controller
                         ->sum('trip_amount');
 
                     $commission[$i] = TripTransaction::when(is_numeric($request['module_id']), function ($q) use ($request) {
-                            return $q->where('module_id', $request['module_id']);
-                        })
+                        return $q->where('module_id', $request['module_id']);
+                    })
                         ->when(is_numeric($request['zone_id']), function ($q) use ($request) {
                             return $q->where('zone_id', $request['zone_id']);
                         })
                         ->whereMonth('created_at', $i)->whereYear('created_at', now()->format('Y'))
                         ->sum(DB::raw('admin_commission + admin_expense'));
 
-                    $total_subs[$i] = SubscriptionTransaction::when(is_numeric($request['zone_id']),function($q)use($request){
-                        return $q->whereHas('store', function($query)use($request){
+                    $total_subs[$i] = SubscriptionTransaction::when(is_numeric($request['zone_id']), function ($q) use ($request) {
+                        return $q->whereHas('store', function ($query) use ($request) {
                             return $query->where('zone_id', $request['zone_id'])->where('module_id', $request['module_id']);
                         });
                     })
-                    ->whereMonth('created_at', $i)->whereYear('created_at', now()->format('Y'))
-                    ->sum('paid_amount');
+                        ->whereMonth('created_at', $i)->whereYear('created_at', now()->format('Y'))
+                        ->sum('paid_amount');
                 }
                 $label = $months;
 
@@ -285,8 +292,8 @@ class DashboardController extends Controller
                     $currentDate = $weekStartDate->copy()->addDays($i); // Get the date for the current day in the loop
 
                     $total_sell[$i] = TripTransaction::when(is_numeric($request['module_id']), function ($q) use ($request) {
-                            return $q->where('module_id', $request['module_id']);
-                        })
+                        return $q->where('module_id', $request['module_id']);
+                    })
                         ->when(is_numeric($request['zone_id']), function ($q) use ($request) {
                             return $q->where('zone_id', $request['zone_id']);
                         })
@@ -294,21 +301,21 @@ class DashboardController extends Controller
                         ->sum('trip_amount');
 
                     $commission[$i] = TripTransaction::when(is_numeric($request['module_id']), function ($q) use ($request) {
-                            return $q->where('module_id', $request['module_id']);
-                        })
+                        return $q->where('module_id', $request['module_id']);
+                    })
                         ->when(is_numeric($request['zone_id']), function ($q) use ($request) {
                             return $q->where('zone_id', $request['zone_id']);
                         })
                         ->whereDate('created_at', $currentDate->format('Y-m-d'))
                         ->sum(DB::raw('admin_commission + admin_expense'));
 
-                    $total_subs[$i] = SubscriptionTransaction::when(is_numeric($request['zone_id']),function($q)use($request){
-                        return $q->whereHas('store', function($query)use($request){
+                    $total_subs[$i] = SubscriptionTransaction::when(is_numeric($request['zone_id']), function ($q) use ($request) {
+                        return $q->whereHas('store', function ($query) use ($request) {
                             return $query->where('zone_id', $request['zone_id'])->where('module_id', $request['module_id']);
                         });
                     })
-                    ->whereDate('created_at', $currentDate->format('Y-m-d'))
-                    ->sum('paid_amount');
+                        ->whereDate('created_at', $currentDate->format('Y-m-d'))
+                        ->sum('paid_amount');
                 }
 
                 $label = $days;
@@ -334,8 +341,8 @@ class DashboardController extends Controller
                     }
 
                     $total_sell[$i] = TripTransaction::when(is_numeric($request['module_id']), function ($q) use ($request) {
-                            return $q->where('module_id', $request['module_id']);
-                        })
+                        return $q->where('module_id', $request['module_id']);
+                    })
                         ->when(is_numeric($request['zone_id']), function ($q) use ($request) {
                             return $q->where('zone_id', $request['zone_id']);
                         })
@@ -343,8 +350,8 @@ class DashboardController extends Controller
                         ->sum('trip_amount');
 
                     $commission[$i] = TripTransaction::when(is_numeric($request['module_id']), function ($q) use ($request) {
-                            return $q->where('module_id', $request['module_id']);
-                        })
+                        return $q->where('module_id', $request['module_id']);
+                    })
                         ->when(is_numeric($request['zone_id']), function ($q) use ($request) {
                             return $q->where('zone_id', $request['zone_id']);
                         })
@@ -352,13 +359,13 @@ class DashboardController extends Controller
                         ->sum(DB::raw('admin_commission + admin_expense'));
 
 
-                    $total_subs[$i] = SubscriptionTransaction::when(is_numeric($request['zone_id']),function($q)use($request){
-                        return $q->whereHas('store', function($query)use($request){
+                    $total_subs[$i] = SubscriptionTransaction::when(is_numeric($request['zone_id']), function ($q) use ($request) {
+                        return $q->whereHas('store', function ($query) use ($request) {
                             return $query->where('zone_id', $request['zone_id'])->where('module_id', $request['module_id']);
                         });
                     })
-                    ->whereBetween('created_at', ["{$start->format('Y-m-d')} 00:00:00", "{$end->format('Y-m-d')} 23:59:59"])
-                    ->sum('paid_amount');
+                        ->whereBetween('created_at', ["{$start->format('Y-m-d')} 00:00:00", "{$end->format('Y-m-d')} 23:59:59"])
+                        ->sum('paid_amount');
 
                     $start = $end->copy()->addDay();
                 }
@@ -370,8 +377,8 @@ class DashboardController extends Controller
             default:
                 for ($i = 1; $i <= 12; $i++) {
                     $total_sell[$i] = TripTransaction::when(is_numeric($request['module_id']), function ($q) use ($request) {
-                            return $q->where('module_id', $request['module_id']);
-                        })
+                        return $q->where('module_id', $request['module_id']);
+                    })
                         ->when(is_numeric($request['zone_id']), function ($q) use ($request) {
                             return $q->where('zone_id', $request['zone_id']);
                         })
@@ -379,24 +386,23 @@ class DashboardController extends Controller
                         ->sum('trip_amount');
 
                     $commission[$i] = TripTransaction::when(is_numeric($request['module_id']), function ($q) use ($request) {
-                            return $q->where('module_id', $request['module_id']);
-                        })
+                        return $q->where('module_id', $request['module_id']);
+                    })
                         ->when(is_numeric($request['zone_id']), function ($q) use ($request) {
                             return $q->where('zone_id', $request['zone_id']);
                         })
                         ->whereMonth('created_at', $i)->whereYear('created_at', now()->format('Y'))
                         ->sum(DB::raw('admin_commission + admin_expense'));
 
-                    $total_subs[$i] = SubscriptionTransaction::when(is_numeric($request['zone_id']),function($q)use($request){
-                        return $q->whereHas('store', function($query)use($request){
+                    $total_subs[$i] = SubscriptionTransaction::when(is_numeric($request['zone_id']), function ($q) use ($request) {
+                        return $q->whereHas('store', function ($query) use ($request) {
                             return $query->where('zone_id', $request['zone_id'])->where('module_id', $request['module_id']);
                         });
                     })
-                    ->whereMonth('created_at', $i)->whereYear('created_at', now()->format('Y'))
-                    ->sum('paid_amount');
+                        ->whereMonth('created_at', $i)->whereYear('created_at', now()->format('Y'))
+                        ->sum('paid_amount');
                 }
                 $label = $months;
-
         }
 
         $dash_data['top_providers'] = $topProvider;
@@ -408,5 +414,4 @@ class DashboardController extends Controller
 
         return $dash_data;
     }
-
 }
