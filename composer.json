@@ -31,6 +31,7 @@
         "mercadopago/dx-php": "3.0.7",
         "mpdf/mpdf": "^8.0",
         "nwidart/laravel-modules": "9.0",
+        "orangehill/iseed": "^3.1",
         "paypal/paypal-checkout-sdk": "^1.0",
         "phonepe/phonepe-pg-php-sdk": "^1.0",
         "pusher/pusher-php-server": "^7.2",
@@ -50,7 +51,8 @@
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^10.0",
-        "spatie/laravel-ignition": "^2.0"
+        "spatie/laravel-ignition": "^2.0",
+        "tyghaykal/laravel-seed-generator": "^2.2"
     },
     "autoload": {
         "files": [

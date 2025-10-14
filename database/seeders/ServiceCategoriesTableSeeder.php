@@ -1,0 +1,418 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+
+class ServiceCategoriesTableSeeder extends Seeder
+{
+
+    /**
+     * Auto generated seed file
+     *
+     * @return void
+     */
+    public function run()
+    {
+        
+
+        \DB::table('service_categories')->delete();
+        
+        \DB::table('service_categories')->insert(array (
+            0 => 
+            array (
+                'id' => 1,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'Cleaning',
+                'image' => '2025-09-04-68b928aae35b8.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 1,
+                'created_at' => '2025-09-04 05:15:43',
+                'updated_at' => '2025-09-18 11:24:32',
+            ),
+            1 => 
+            array (
+                'id' => 2,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'Plumbing',
+                'image' => '2025-09-04-68b928ba60499.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 1,
+                'created_at' => '2025-09-04 05:17:01',
+                'updated_at' => '2025-09-18 11:24:37',
+            ),
+            2 => 
+            array (
+                'id' => 3,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'Electrical',
+                'image' => '2025-09-04-68b928ce797ab.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 1,
+                'created_at' => '2025-09-04 05:18:14',
+                'updated_at' => '2025-09-18 11:24:41',
+            ),
+            3 => 
+            array (
+                'id' => 4,
+                'module_id' => 8,
+                'parent_id' => '1',
+                'name' => 'Home Deep Cleaning',
+                'image' => '2025-09-04-68b93ba052917.png',
+                'position' => 2,
+                'description' => 'Home Deep Cleaning',
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-09-04 05:19:27',
+                'updated_at' => '2025-09-04 07:11:28',
+            ),
+            4 => 
+            array (
+                'id' => 5,
+                'module_id' => 8,
+                'parent_id' => '1',
+                'name' => 'Carpet & Upholstery Cleaning',
+                'image' => '2025-09-04-68b9296849849.png',
+                'position' => 2,
+                'description' => 'Carpet & Upholstery Cleaning',
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-09-04 05:20:00',
+                'updated_at' => '2025-09-04 05:53:44',
+            ),
+            5 => 
+            array (
+                'id' => 6,
+                'module_id' => 8,
+                'parent_id' => '1',
+                'name' => 'Kitchen & Bathroom Cleaning',
+                'image' => '2025-09-04-68b929608f2a2.png',
+                'position' => 2,
+                'description' => 'Kitchen & Bathroom Cleaning',
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-09-04 05:20:43',
+                'updated_at' => '2025-09-04 05:53:36',
+            ),
+            6 => 
+            array (
+                'id' => 7,
+                'module_id' => 8,
+                'parent_id' => '2',
+                'name' => 'Leak Repair & Pipe Fixing',
+                'image' => '2025-09-04-68b9295820990.png',
+                'position' => 2,
+                'description' => 'Leak Repair & Pipe Fixing',
+                'is_active' => 0,
+                'is_featured' => 0,
+                'created_at' => '2025-09-04 05:21:35',
+                'updated_at' => '2025-10-12 16:28:53',
+            ),
+            7 => 
+            array (
+                'id' => 8,
+                'module_id' => 8,
+                'parent_id' => '2',
+                'name' => 'Water Heater Installation & Repair',
+                'image' => '2025-09-04-68b928fa1554b.png',
+                'position' => 2,
+                'description' => 'Water Heater Installation & Repair',
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-09-04 05:22:05',
+                'updated_at' => '2025-09-04 05:51:54',
+            ),
+            8 => 
+            array (
+                'id' => 9,
+                'module_id' => 8,
+                'parent_id' => '3',
+                'name' => 'Wiring & Rewiring',
+                'image' => '2025-09-04-68b928eeca356.png',
+                'position' => 2,
+                'description' => 'Wiring & Rewiring',
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-09-04 05:22:34',
+                'updated_at' => '2025-09-04 05:51:42',
+            ),
+            9 => 
+            array (
+                'id' => 10,
+                'module_id' => 8,
+                'parent_id' => '3',
+                'name' => 'Appliance Installation & Repair',
+                'image' => '2025-09-04-68b928e805efc.png',
+                'position' => 2,
+                'description' => 'Appliance Installation & Repair',
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-09-04 05:23:09',
+                'updated_at' => '2025-09-04 05:51:36',
+            ),
+            10 => 
+            array (
+                'id' => 11,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'Ambulance',
+                'image' => '2025-09-09-68bfc09b421f3.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-09-09 11:52:27',
+                'updated_at' => '2025-10-09 12:00:35',
+            ),
+            11 => 
+            array (
+                'id' => 12,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'Home Cleaning',
+                'image' => '2025-09-09-68bfc192c1fea.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-09-09 11:56:34',
+                'updated_at' => '2025-09-09 11:56:34',
+            ),
+            12 => 
+            array (
+                'id' => 13,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'Test',
+                'image' => '2025-09-17-68ca3a5e03973.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-09-17 10:34:38',
+                'updated_at' => '2025-09-17 10:34:38',
+            ),
+            13 => 
+            array (
+                'id' => 14,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'a',
+                'image' => '2025-10-07-68e4b16e4da73.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-10-07 12:21:34',
+                'updated_at' => '2025-10-07 12:21:34',
+            ),
+            14 => 
+            array (
+                'id' => 15,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'B',
+                'image' => '2025-10-07-68e4b447f4211.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 0,
+                'is_featured' => 0,
+                'created_at' => '2025-10-07 12:33:44',
+                'updated_at' => '2025-10-09 12:02:30',
+            ),
+            15 => 
+            array (
+                'id' => 16,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'C',
+                'image' => '2025-10-07-68e4b8f7e11cb.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-10-07 12:53:43',
+                'updated_at' => '2025-10-07 12:53:43',
+            ),
+            16 => 
+            array (
+                'id' => 17,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'D',
+                'image' => '2025-10-07-68e4b91b5fb42.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-10-07 12:54:19',
+                'updated_at' => '2025-10-07 12:54:19',
+            ),
+            17 => 
+            array (
+                'id' => 18,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'E',
+                'image' => '2025-10-07-68e4b94ac0272.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-10-07 12:55:06',
+                'updated_at' => '2025-10-07 12:55:06',
+            ),
+            18 => 
+            array (
+                'id' => 19,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'gfhdfgh',
+                'image' => '2025-10-07-68e4e09243786.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-10-07 15:42:42',
+                'updated_at' => '2025-10-07 15:42:42',
+            ),
+            19 => 
+            array (
+                'id' => 20,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'dsfgsdfg',
+                'image' => '2025-10-07-68e4e13d6afd1.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-10-07 15:45:33',
+                'updated_at' => '2025-10-07 15:45:33',
+            ),
+            20 => 
+            array (
+                'id' => 21,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'CityLink Taxis',
+                'image' => '2025-10-07-68e4e228c7474.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-10-07 15:49:28',
+                'updated_at' => '2025-10-07 15:49:28',
+            ),
+            21 => 
+            array (
+                'id' => 22,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'Testqweqwe',
+                'image' => '2025-10-09-68e784d04b320.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-10-09 15:48:00',
+                'updated_at' => '2025-10-09 15:48:00',
+            ),
+            22 => 
+            array (
+                'id' => 23,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'Testqweqweergergterg',
+                'image' => '2025-10-09-68e787b177e4e.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-10-09 16:00:17',
+                'updated_at' => '2025-10-09 16:00:17',
+            ),
+            23 => 
+            array (
+                'id' => 24,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'sdfasdf',
+                'image' => '2025-10-09-68e7a550103f7.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-10-09 18:06:40',
+                'updated_at' => '2025-10-09 18:06:40',
+            ),
+            24 => 
+            array (
+                'id' => 25,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'Test1',
+                'image' => '2025-10-09-68e7a7384071d.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 0,
+                'is_featured' => 0,
+                'created_at' => '2025-10-09 18:14:48',
+                'updated_at' => '2025-10-12 16:27:46',
+            ),
+            25 => 
+            array (
+                'id' => 27,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'Fresh Hass Avocado',
+                'image' => '2025-10-11-68ea2850b1c4f.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-10-11 15:50:08',
+                'updated_at' => '2025-10-11 15:50:08',
+            ),
+            26 => 
+            array (
+                'id' => 28,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'Elvis Burks',
+                'image' => '2025-10-11-68ea288fd1be7.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-10-11 15:51:11',
+                'updated_at' => '2025-10-11 15:51:11',
+            ),
+            27 => 
+            array (
+                'id' => 29,
+                'module_id' => 8,
+                'parent_id' => '0',
+                'name' => 'dsasd',
+                'image' => '2025-10-12-68eb50783d338.png',
+                'position' => 1,
+                'description' => NULL,
+                'is_active' => 1,
+                'is_featured' => 0,
+                'created_at' => '2025-10-12 12:53:44',
+                'updated_at' => '2025-10-12 12:53:44',
+            ),
+        ));
+        
+        
+    }
+}

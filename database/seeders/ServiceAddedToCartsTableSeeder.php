@@ -1,0 +1,1236 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+
+class ServiceAddedToCartsTableSeeder extends Seeder
+{
+
+    /**
+     * Auto generated seed file
+     *
+     * @return void
+     */
+    public function run()
+    {
+        
+
+        \DB::table('service_added_to_carts')->delete();
+        
+        \DB::table('service_added_to_carts')->insert(array (
+            0 => 
+            array (
+                'id' => 1,
+                'module_id' => 8,
+                'user_id' => 2,
+                'service_id' => 1,
+                'count' => 8,
+                'is_guest' => 1,
+                'created_at' => '2025-09-04 06:25:36',
+                'updated_at' => '2025-09-04 06:26:44',
+            ),
+            1 => 
+            array (
+                'id' => 2,
+                'module_id' => 8,
+                'user_id' => 2,
+                'service_id' => 3,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-04 07:36:19',
+                'updated_at' => '2025-09-04 07:36:19',
+            ),
+            2 => 
+            array (
+                'id' => 3,
+                'module_id' => 8,
+                'user_id' => 4,
+                'service_id' => 1,
+                'count' => 6,
+                'is_guest' => 1,
+                'created_at' => '2025-09-04 09:02:21',
+                'updated_at' => '2025-09-04 10:10:11',
+            ),
+            3 => 
+            array (
+                'id' => 4,
+                'module_id' => 8,
+                'user_id' => 4,
+                'service_id' => 3,
+                'count' => 3,
+                'is_guest' => 1,
+                'created_at' => '2025-09-04 10:14:35',
+                'updated_at' => '2025-09-04 10:14:44',
+            ),
+            4 => 
+            array (
+                'id' => 5,
+                'module_id' => 8,
+                'user_id' => 4,
+                'service_id' => 2,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-04 10:24:00',
+                'updated_at' => '2025-09-04 10:24:00',
+            ),
+            5 => 
+            array (
+                'id' => 6,
+                'module_id' => 8,
+                'user_id' => 29,
+                'service_id' => 3,
+                'count' => 2,
+                'is_guest' => 0,
+                'created_at' => '2025-09-04 10:36:00',
+                'updated_at' => '2025-09-04 10:36:01',
+            ),
+            6 => 
+            array (
+                'id' => 7,
+                'module_id' => 8,
+                'user_id' => 29,
+                'service_id' => 1,
+                'count' => 4,
+                'is_guest' => 0,
+                'created_at' => '2025-09-04 10:39:08',
+                'updated_at' => '2025-09-04 10:58:37',
+            ),
+            7 => 
+            array (
+                'id' => 8,
+                'module_id' => 8,
+                'user_id' => 8,
+                'service_id' => 1,
+                'count' => 39,
+                'is_guest' => 0,
+                'created_at' => '2025-09-07 04:50:39',
+                'updated_at' => '2025-10-13 12:53:13',
+            ),
+            8 => 
+            array (
+                'id' => 9,
+                'module_id' => 8,
+                'user_id' => 9,
+                'service_id' => 3,
+                'count' => 2,
+                'is_guest' => 1,
+                'created_at' => '2025-09-07 07:40:26',
+                'updated_at' => '2025-09-07 07:40:27',
+            ),
+            9 => 
+            array (
+                'id' => 10,
+                'module_id' => 8,
+                'user_id' => 9,
+                'service_id' => 2,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-07 07:43:04',
+                'updated_at' => '2025-09-07 07:43:04',
+            ),
+            10 => 
+            array (
+                'id' => 11,
+                'module_id' => 8,
+                'user_id' => 8,
+                'service_id' => 3,
+                'count' => 19,
+                'is_guest' => 1,
+                'created_at' => '2025-09-07 07:44:43',
+                'updated_at' => '2025-10-13 21:58:36',
+            ),
+            11 => 
+            array (
+                'id' => 12,
+                'module_id' => 8,
+                'user_id' => 276,
+                'service_id' => 3,
+                'count' => 7,
+                'is_guest' => 1,
+                'created_at' => '2025-09-07 07:53:51',
+                'updated_at' => '2025-09-07 11:39:42',
+            ),
+            12 => 
+            array (
+                'id' => 13,
+                'module_id' => 8,
+                'user_id' => 276,
+                'service_id' => 2,
+                'count' => 10,
+                'is_guest' => 1,
+                'created_at' => '2025-09-07 08:30:47',
+                'updated_at' => '2025-09-07 10:51:55',
+            ),
+            13 => 
+            array (
+                'id' => 14,
+                'module_id' => 8,
+                'user_id' => 276,
+                'service_id' => 1,
+                'count' => 14,
+                'is_guest' => 1,
+                'created_at' => '2025-09-07 08:39:55',
+                'updated_at' => '2025-09-07 12:08:29',
+            ),
+            14 => 
+            array (
+                'id' => 15,
+                'module_id' => 8,
+                'user_id' => 8,
+                'service_id' => 2,
+                'count' => 11,
+                'is_guest' => 1,
+                'created_at' => '2025-09-07 09:41:03',
+                'updated_at' => '2025-10-12 09:54:01',
+            ),
+            15 => 
+            array (
+                'id' => 16,
+                'module_id' => 8,
+                'user_id' => 10,
+                'service_id' => 2,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-07 09:42:13',
+                'updated_at' => '2025-09-07 09:42:13',
+            ),
+            16 => 
+            array (
+                'id' => 17,
+                'module_id' => 8,
+                'user_id' => 10,
+                'service_id' => 3,
+                'count' => 3,
+                'is_guest' => 1,
+                'created_at' => '2025-09-07 09:44:49',
+                'updated_at' => '2025-09-07 09:45:39',
+            ),
+            17 => 
+            array (
+                'id' => 18,
+                'module_id' => 8,
+                'user_id' => 20,
+                'service_id' => 1,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-07 11:15:39',
+                'updated_at' => '2025-09-07 11:15:39',
+            ),
+            18 => 
+            array (
+                'id' => 19,
+                'module_id' => 8,
+                'user_id' => 265,
+                'service_id' => 2,
+                'count' => 4,
+                'is_guest' => 1,
+                'created_at' => '2025-09-07 11:19:07',
+                'updated_at' => '2025-09-07 11:30:37',
+            ),
+            19 => 
+            array (
+                'id' => 20,
+                'module_id' => 8,
+                'user_id' => 265,
+                'service_id' => 3,
+                'count' => 4,
+                'is_guest' => 1,
+                'created_at' => '2025-09-07 11:19:26',
+                'updated_at' => '2025-09-07 11:30:29',
+            ),
+            20 => 
+            array (
+                'id' => 21,
+                'module_id' => 8,
+                'user_id' => 265,
+                'service_id' => 1,
+                'count' => 7,
+                'is_guest' => 1,
+                'created_at' => '2025-09-07 11:19:34',
+                'updated_at' => '2025-09-07 11:30:23',
+            ),
+            21 => 
+            array (
+                'id' => 22,
+                'module_id' => 8,
+                'user_id' => 34,
+                'service_id' => 1,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-08 04:58:49',
+                'updated_at' => '2025-09-08 04:58:49',
+            ),
+            22 => 
+            array (
+                'id' => 23,
+                'module_id' => 8,
+                'user_id' => 10,
+                'service_id' => 1,
+                'count' => 1,
+                'is_guest' => 0,
+                'created_at' => '2025-09-08 11:55:29',
+                'updated_at' => '2025-09-08 11:55:29',
+            ),
+            23 => 
+            array (
+                'id' => 24,
+                'module_id' => 8,
+                'user_id' => 43,
+                'service_id' => 1,
+                'count' => 2,
+                'is_guest' => 1,
+                'created_at' => '2025-09-09 10:39:38',
+                'updated_at' => '2025-09-09 10:39:38',
+            ),
+            24 => 
+            array (
+                'id' => 25,
+                'module_id' => 8,
+                'user_id' => 311,
+                'service_id' => 1,
+                'count' => 8,
+                'is_guest' => 1,
+                'created_at' => '2025-09-09 10:40:51',
+                'updated_at' => '2025-09-09 11:29:13',
+            ),
+            25 => 
+            array (
+                'id' => 26,
+                'module_id' => 8,
+                'user_id' => 51,
+                'service_id' => 1,
+                'count' => 2,
+                'is_guest' => 1,
+                'created_at' => '2025-09-09 11:35:17',
+                'updated_at' => '2025-09-09 11:35:17',
+            ),
+            26 => 
+            array (
+                'id' => 27,
+                'module_id' => 8,
+                'user_id' => 21,
+                'service_id' => 6,
+                'count' => 1,
+                'is_guest' => 0,
+                'created_at' => '2025-09-09 11:36:44',
+                'updated_at' => '2025-09-09 11:36:44',
+            ),
+            27 => 
+            array (
+                'id' => 28,
+                'module_id' => 8,
+                'user_id' => 51,
+                'service_id' => 3,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-09 11:48:58',
+                'updated_at' => '2025-09-09 11:48:58',
+            ),
+            28 => 
+            array (
+                'id' => 29,
+                'module_id' => 8,
+                'user_id' => 8,
+                'service_id' => 4,
+                'count' => 10,
+                'is_guest' => 0,
+                'created_at' => '2025-09-09 11:51:28',
+                'updated_at' => '2025-10-06 09:49:14',
+            ),
+            29 => 
+            array (
+                'id' => 30,
+                'module_id' => 8,
+                'user_id' => 21,
+                'service_id' => 1,
+                'count' => 4,
+                'is_guest' => 0,
+                'created_at' => '2025-09-09 11:57:42',
+                'updated_at' => '2025-09-11 11:28:49',
+            ),
+            30 => 
+            array (
+                'id' => 31,
+                'module_id' => 8,
+                'user_id' => 21,
+                'service_id' => 5,
+                'count' => 2,
+                'is_guest' => 0,
+                'created_at' => '2025-09-09 12:19:06',
+                'updated_at' => '2025-09-09 13:35:05',
+            ),
+            31 => 
+            array (
+                'id' => 32,
+                'module_id' => 8,
+                'user_id' => 61,
+                'service_id' => 1,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-09 12:47:08',
+                'updated_at' => '2025-09-09 12:47:08',
+            ),
+            32 => 
+            array (
+                'id' => 33,
+                'module_id' => 8,
+                'user_id' => 61,
+                'service_id' => 4,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-09 12:54:56',
+                'updated_at' => '2025-09-09 12:54:56',
+            ),
+            33 => 
+            array (
+                'id' => 34,
+                'module_id' => 8,
+                'user_id' => 61,
+                'service_id' => 7,
+                'count' => 2,
+                'is_guest' => 1,
+                'created_at' => '2025-09-09 13:11:14',
+                'updated_at' => '2025-09-09 13:11:26',
+            ),
+            34 => 
+            array (
+                'id' => 35,
+                'module_id' => 8,
+                'user_id' => 72,
+                'service_id' => 3,
+                'count' => 2,
+                'is_guest' => 1,
+                'created_at' => '2025-09-09 13:16:54',
+                'updated_at' => '2025-09-09 13:16:54',
+            ),
+            35 => 
+            array (
+                'id' => 36,
+                'module_id' => 8,
+                'user_id' => 93,
+                'service_id' => 4,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-09 13:55:52',
+                'updated_at' => '2025-09-09 13:55:52',
+            ),
+            36 => 
+            array (
+                'id' => 37,
+                'module_id' => 8,
+                'user_id' => 30,
+                'service_id' => 1,
+                'count' => 2,
+                'is_guest' => 0,
+                'created_at' => '2025-09-09 14:23:56',
+                'updated_at' => '2025-09-09 14:27:16',
+            ),
+            37 => 
+            array (
+                'id' => 38,
+                'module_id' => 8,
+                'user_id' => 8,
+                'service_id' => 5,
+                'count' => 6,
+                'is_guest' => 0,
+                'created_at' => '2025-09-09 14:49:06',
+                'updated_at' => '2025-10-11 17:52:25',
+            ),
+            38 => 
+            array (
+                'id' => 39,
+                'module_id' => 8,
+                'user_id' => 116,
+                'service_id' => 1,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-10 17:22:26',
+                'updated_at' => '2025-09-10 17:22:26',
+            ),
+            39 => 
+            array (
+                'id' => 40,
+                'module_id' => 8,
+                'user_id' => 115,
+                'service_id' => 2,
+                'count' => 2,
+                'is_guest' => 1,
+                'created_at' => '2025-09-10 17:41:09',
+                'updated_at' => '2025-09-10 17:41:09',
+            ),
+            40 => 
+            array (
+                'id' => 41,
+                'module_id' => 8,
+                'user_id' => 118,
+                'service_id' => 2,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-10 18:35:03',
+                'updated_at' => '2025-09-10 18:35:03',
+            ),
+            41 => 
+            array (
+                'id' => 42,
+                'module_id' => 8,
+                'user_id' => 134,
+                'service_id' => 4,
+                'count' => 2,
+                'is_guest' => 1,
+                'created_at' => '2025-09-11 11:08:35',
+                'updated_at' => '2025-09-11 11:53:52',
+            ),
+            42 => 
+            array (
+                'id' => 43,
+                'module_id' => 8,
+                'user_id' => 133,
+                'service_id' => 2,
+                'count' => 2,
+                'is_guest' => 1,
+                'created_at' => '2025-09-11 11:12:10',
+                'updated_at' => '2025-09-11 11:12:10',
+            ),
+            43 => 
+            array (
+                'id' => 44,
+                'module_id' => 8,
+                'user_id' => 31,
+                'service_id' => 2,
+                'count' => 7,
+                'is_guest' => 0,
+                'created_at' => '2025-09-11 11:17:47',
+                'updated_at' => '2025-09-11 12:22:37',
+            ),
+            44 => 
+            array (
+                'id' => 45,
+                'module_id' => 8,
+                'user_id' => 136,
+                'service_id' => 2,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-11 11:54:44',
+                'updated_at' => '2025-09-11 11:54:44',
+            ),
+            45 => 
+            array (
+                'id' => 46,
+                'module_id' => 8,
+                'user_id' => 146,
+                'service_id' => 5,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-11 13:15:11',
+                'updated_at' => '2025-09-11 13:15:11',
+            ),
+            46 => 
+            array (
+                'id' => 47,
+                'module_id' => 8,
+                'user_id' => 146,
+                'service_id' => 4,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-11 13:15:35',
+                'updated_at' => '2025-09-11 13:15:35',
+            ),
+            47 => 
+            array (
+                'id' => 48,
+                'module_id' => 8,
+                'user_id' => 118,
+                'service_id' => 3,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-11 13:17:48',
+                'updated_at' => '2025-09-11 13:17:48',
+            ),
+            48 => 
+            array (
+                'id' => 49,
+                'module_id' => 8,
+                'user_id' => 147,
+                'service_id' => 6,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-11 13:23:52',
+                'updated_at' => '2025-09-11 13:23:52',
+            ),
+            49 => 
+            array (
+                'id' => 50,
+                'module_id' => 8,
+                'user_id' => 8,
+                'service_id' => 7,
+                'count' => 2,
+                'is_guest' => 0,
+                'created_at' => '2025-09-11 23:10:02',
+                'updated_at' => '2025-10-13 16:21:55',
+            ),
+            50 => 
+            array (
+                'id' => 51,
+                'module_id' => 8,
+                'user_id' => 14,
+                'service_id' => 2,
+                'count' => 21,
+                'is_guest' => 0,
+                'created_at' => '2025-09-16 12:19:32',
+                'updated_at' => '2025-10-12 16:00:30',
+            ),
+            51 => 
+            array (
+                'id' => 52,
+                'module_id' => 8,
+                'user_id' => 282,
+                'service_id' => 1,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-16 15:30:19',
+                'updated_at' => '2025-09-16 15:30:19',
+            ),
+            52 => 
+            array (
+                'id' => 53,
+                'module_id' => 8,
+                'user_id' => 14,
+                'service_id' => 1,
+                'count' => 74,
+                'is_guest' => 0,
+                'created_at' => '2025-09-17 11:29:38',
+                'updated_at' => '2025-10-12 16:00:30',
+            ),
+            53 => 
+            array (
+                'id' => 54,
+                'module_id' => 8,
+                'user_id' => 14,
+                'service_id' => 4,
+                'count' => 10,
+                'is_guest' => 0,
+                'created_at' => '2025-09-17 11:29:58',
+                'updated_at' => '2025-10-12 16:00:30',
+            ),
+            54 => 
+            array (
+                'id' => 55,
+                'module_id' => 8,
+                'user_id' => 416,
+                'service_id' => 4,
+                'count' => 2,
+                'is_guest' => 1,
+                'created_at' => '2025-09-17 12:37:55',
+                'updated_at' => '2025-09-17 12:37:55',
+            ),
+            55 => 
+            array (
+                'id' => 56,
+                'module_id' => 8,
+                'user_id' => 14,
+                'service_id' => 8,
+                'count' => 4,
+                'is_guest' => 0,
+                'created_at' => '2025-09-18 10:48:07',
+                'updated_at' => '2025-09-18 15:13:29',
+            ),
+            56 => 
+            array (
+                'id' => 57,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 7,
+                'count' => 6,
+                'is_guest' => 0,
+                'created_at' => '2025-09-20 15:01:32',
+                'updated_at' => '2025-10-13 17:51:01',
+            ),
+            57 => 
+            array (
+                'id' => 58,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 1,
+                'count' => 26,
+                'is_guest' => 0,
+                'created_at' => '2025-09-20 16:36:29',
+                'updated_at' => '2025-10-13 12:42:44',
+            ),
+            58 => 
+            array (
+                'id' => 59,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 1,
+                'count' => 76,
+                'is_guest' => 0,
+                'created_at' => '2025-09-21 10:09:22',
+                'updated_at' => '2025-10-11 11:52:30',
+            ),
+            59 => 
+            array (
+                'id' => 60,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 1,
+                'count' => 1,
+                'is_guest' => 0,
+                'created_at' => '2025-09-21 10:09:22',
+                'updated_at' => '2025-09-21 10:09:22',
+            ),
+            60 => 
+            array (
+                'id' => 61,
+                'module_id' => 8,
+                'user_id' => 482,
+                'service_id' => 1,
+                'count' => 15,
+                'is_guest' => 1,
+                'created_at' => '2025-09-21 13:59:52',
+                'updated_at' => '2025-09-21 14:40:51',
+            ),
+            61 => 
+            array (
+                'id' => 62,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 9,
+                'count' => 5,
+                'is_guest' => 0,
+                'created_at' => '2025-09-22 18:00:23',
+                'updated_at' => '2025-10-13 14:45:02',
+            ),
+            62 => 
+            array (
+                'id' => 63,
+                'module_id' => 8,
+                'user_id' => 14,
+                'service_id' => 9,
+                'count' => 23,
+                'is_guest' => 0,
+                'created_at' => '2025-09-23 10:49:53',
+                'updated_at' => '2025-10-12 13:46:30',
+            ),
+            63 => 
+            array (
+                'id' => 64,
+                'module_id' => 8,
+                'user_id' => 14,
+                'service_id' => 7,
+                'count' => 1,
+                'is_guest' => 0,
+                'created_at' => '2025-09-23 14:36:47',
+                'updated_at' => '2025-09-23 14:36:47',
+            ),
+            64 => 
+            array (
+                'id' => 65,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 6,
+                'count' => 4,
+                'is_guest' => 0,
+                'created_at' => '2025-09-23 18:01:34',
+                'updated_at' => '2025-10-06 10:30:40',
+            ),
+            65 => 
+            array (
+                'id' => 66,
+                'module_id' => 8,
+                'user_id' => 519,
+                'service_id' => 5,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-24 16:27:55',
+                'updated_at' => '2025-09-24 16:27:55',
+            ),
+            66 => 
+            array (
+                'id' => 67,
+                'module_id' => 8,
+                'user_id' => 32,
+                'service_id' => 5,
+                'count' => 7,
+                'is_guest' => 0,
+                'created_at' => '2025-09-24 16:28:34',
+                'updated_at' => '2025-10-11 15:24:30',
+            ),
+            67 => 
+            array (
+                'id' => 68,
+                'module_id' => 8,
+                'user_id' => 32,
+                'service_id' => 1,
+                'count' => 98,
+                'is_guest' => 0,
+                'created_at' => '2025-09-24 17:19:53',
+                'updated_at' => '2025-10-13 17:46:41',
+            ),
+            68 => 
+            array (
+                'id' => 69,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 8,
+                'count' => 4,
+                'is_guest' => 0,
+                'created_at' => '2025-09-24 17:52:19',
+                'updated_at' => '2025-09-30 11:50:05',
+            ),
+            69 => 
+            array (
+                'id' => 70,
+                'module_id' => 8,
+                'user_id' => 526,
+                'service_id' => 1,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-09-25 15:25:55',
+                'updated_at' => '2025-09-25 15:25:55',
+            ),
+            70 => 
+            array (
+                'id' => 71,
+                'module_id' => 8,
+                'user_id' => 14,
+                'service_id' => 3,
+                'count' => 11,
+                'is_guest' => 0,
+                'created_at' => '2025-09-25 16:00:46',
+                'updated_at' => '2025-10-12 13:05:19',
+            ),
+            71 => 
+            array (
+                'id' => 72,
+                'module_id' => 8,
+                'user_id' => 32,
+                'service_id' => 10,
+                'count' => 19,
+                'is_guest' => 0,
+                'created_at' => '2025-09-29 12:34:19',
+                'updated_at' => '2025-09-29 15:07:37',
+            ),
+            72 => 
+            array (
+                'id' => 73,
+                'module_id' => 8,
+                'user_id' => 32,
+                'service_id' => 8,
+                'count' => 2,
+                'is_guest' => 0,
+                'created_at' => '2025-09-29 12:38:13',
+                'updated_at' => '2025-09-29 13:09:20',
+            ),
+            73 => 
+            array (
+                'id' => 74,
+                'module_id' => 8,
+                'user_id' => 32,
+                'service_id' => 9,
+                'count' => 30,
+                'is_guest' => 0,
+                'created_at' => '2025-09-29 12:40:19',
+                'updated_at' => '2025-09-29 13:08:11',
+            ),
+            74 => 
+            array (
+                'id' => 75,
+                'module_id' => 8,
+                'user_id' => 32,
+                'service_id' => 7,
+                'count' => 6,
+                'is_guest' => 0,
+                'created_at' => '2025-09-29 12:48:11',
+                'updated_at' => '2025-10-05 12:14:16',
+            ),
+            75 => 
+            array (
+                'id' => 76,
+                'module_id' => 8,
+                'user_id' => 32,
+                'service_id' => 2,
+                'count' => 8,
+                'is_guest' => 0,
+                'created_at' => '2025-09-30 10:09:15',
+                'updated_at' => '2025-10-11 10:54:36',
+            ),
+            76 => 
+            array (
+                'id' => 77,
+                'module_id' => 8,
+                'user_id' => 32,
+                'service_id' => 4,
+                'count' => 2,
+                'is_guest' => 0,
+                'created_at' => '2025-09-30 10:13:01',
+                'updated_at' => '2025-09-30 10:13:02',
+            ),
+            77 => 
+            array (
+                'id' => 78,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 4,
+                'count' => 3,
+                'is_guest' => 0,
+                'created_at' => '2025-09-30 10:55:11',
+                'updated_at' => '2025-09-30 11:06:07',
+            ),
+            78 => 
+            array (
+                'id' => 79,
+                'module_id' => 8,
+                'user_id' => 576,
+                'service_id' => 1,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-10-05 10:42:05',
+                'updated_at' => '2025-10-05 10:42:05',
+            ),
+            79 => 
+            array (
+                'id' => 80,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 3,
+                'count' => 2,
+                'is_guest' => 0,
+                'created_at' => '2025-10-05 15:29:10',
+                'updated_at' => '2025-10-11 12:45:27',
+            ),
+            80 => 
+            array (
+                'id' => 81,
+                'module_id' => 8,
+                'user_id' => 580,
+                'service_id' => 6,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-10-06 09:55:10',
+                'updated_at' => '2025-10-06 09:55:10',
+            ),
+            81 => 
+            array (
+                'id' => 82,
+                'module_id' => 8,
+                'user_id' => 8,
+                'service_id' => 6,
+                'count' => 5,
+                'is_guest' => 0,
+                'created_at' => '2025-10-06 09:56:14',
+                'updated_at' => '2025-10-13 17:49:58',
+            ),
+            82 => 
+            array (
+                'id' => 83,
+                'module_id' => 8,
+                'user_id' => 32,
+                'service_id' => 6,
+                'count' => 2,
+                'is_guest' => 0,
+                'created_at' => '2025-10-06 15:15:03',
+                'updated_at' => '2025-10-10 21:40:56',
+            ),
+            83 => 
+            array (
+                'id' => 84,
+                'module_id' => 8,
+                'user_id' => 584,
+                'service_id' => 1,
+                'count' => 4,
+                'is_guest' => 1,
+                'created_at' => '2025-10-06 17:40:08',
+                'updated_at' => '2025-10-06 17:40:15',
+            ),
+            84 => 
+            array (
+                'id' => 85,
+                'module_id' => 8,
+                'user_id' => 584,
+                'service_id' => 5,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-10-06 17:40:15',
+                'updated_at' => '2025-10-06 17:40:15',
+            ),
+            85 => 
+            array (
+                'id' => 86,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 2,
+                'count' => 5,
+                'is_guest' => 0,
+                'created_at' => '2025-10-07 10:52:02',
+                'updated_at' => '2025-10-11 13:09:04',
+            ),
+            86 => 
+            array (
+                'id' => 87,
+                'module_id' => 8,
+                'user_id' => 31,
+                'service_id' => 4,
+                'count' => 4,
+                'is_guest' => 0,
+                'created_at' => '2025-10-08 10:58:19',
+                'updated_at' => '2025-10-08 10:59:14',
+            ),
+            87 => 
+            array (
+                'id' => 88,
+                'module_id' => 8,
+                'user_id' => 31,
+                'service_id' => 8,
+                'count' => 3,
+                'is_guest' => 0,
+                'created_at' => '2025-10-08 10:58:35',
+                'updated_at' => '2025-10-12 16:17:24',
+            ),
+            88 => 
+            array (
+                'id' => 89,
+                'module_id' => 8,
+                'user_id' => 604,
+                'service_id' => 3,
+                'count' => 3,
+                'is_guest' => 1,
+                'created_at' => '2025-10-09 10:32:13',
+                'updated_at' => '2025-10-09 10:32:14',
+            ),
+            89 => 
+            array (
+                'id' => 90,
+                'module_id' => 8,
+                'user_id' => 641,
+                'service_id' => 1,
+                'count' => 4,
+                'is_guest' => 1,
+                'created_at' => '2025-10-11 08:03:31',
+                'updated_at' => '2025-10-11 08:03:32',
+            ),
+            90 => 
+            array (
+                'id' => 91,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 1,
+                'count' => 2,
+                'is_guest' => 0,
+                'created_at' => '2025-10-11 13:17:38',
+                'updated_at' => '2025-10-11 15:06:58',
+            ),
+            91 => 
+            array (
+                'id' => 92,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 5,
+                'count' => 3,
+                'is_guest' => 0,
+                'created_at' => '2025-10-11 15:01:09',
+                'updated_at' => '2025-10-11 15:06:58',
+            ),
+            92 => 
+            array (
+                'id' => 93,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 3,
+                'count' => 1,
+                'is_guest' => 0,
+                'created_at' => '2025-10-11 15:01:38',
+                'updated_at' => '2025-10-11 15:06:58',
+            ),
+            93 => 
+            array (
+                'id' => 94,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 7,
+                'count' => 1,
+                'is_guest' => 0,
+                'created_at' => '2025-10-11 15:04:40',
+                'updated_at' => '2025-10-11 15:06:04',
+            ),
+            94 => 
+            array (
+                'id' => 95,
+                'module_id' => 8,
+                'user_id' => 33,
+                'service_id' => 2,
+                'count' => 2,
+                'is_guest' => 0,
+                'created_at' => '2025-10-11 15:06:34',
+                'updated_at' => '2025-10-11 15:06:58',
+            ),
+            95 => 
+            array (
+                'id' => 96,
+                'module_id' => 8,
+                'user_id' => 37,
+                'service_id' => 7,
+                'count' => 1,
+                'is_guest' => 0,
+                'created_at' => '2025-10-11 16:37:03',
+                'updated_at' => '2025-10-11 16:37:03',
+            ),
+            96 => 
+            array (
+                'id' => 97,
+                'module_id' => 8,
+                'user_id' => 8,
+                'service_id' => 8,
+                'count' => 1,
+                'is_guest' => 0,
+                'created_at' => '2025-10-11 17:52:02',
+                'updated_at' => '2025-10-11 17:52:02',
+            ),
+            97 => 
+            array (
+                'id' => 98,
+                'module_id' => 8,
+                'user_id' => 14,
+                'service_id' => 6,
+                'count' => 1,
+                'is_guest' => 0,
+                'created_at' => '2025-10-12 10:12:02',
+                'updated_at' => '2025-10-12 10:12:02',
+            ),
+            98 => 
+            array (
+                'id' => 99,
+                'module_id' => 8,
+                'user_id' => 14,
+                'service_id' => 5,
+                'count' => 1,
+                'is_guest' => 0,
+                'created_at' => '2025-10-12 13:05:53',
+                'updated_at' => '2025-10-12 13:05:53',
+            ),
+            99 => 
+            array (
+                'id' => 100,
+                'module_id' => 8,
+                'user_id' => 680,
+                'service_id' => 2,
+                'count' => 2,
+                'is_guest' => 1,
+                'created_at' => '2025-10-12 15:48:35',
+                'updated_at' => '2025-10-12 15:48:35',
+            ),
+            100 => 
+            array (
+                'id' => 101,
+                'module_id' => 8,
+                'user_id' => 14,
+                'service_id' => 2,
+                'count' => 2,
+                'is_guest' => 0,
+                'created_at' => '2025-10-12 15:49:54',
+                'updated_at' => '2025-10-12 15:53:22',
+            ),
+            101 => 
+            array (
+                'id' => 102,
+                'module_id' => 8,
+                'user_id' => 14,
+                'service_id' => 3,
+                'count' => 1,
+                'is_guest' => 0,
+                'created_at' => '2025-10-12 15:51:00',
+                'updated_at' => '2025-10-12 15:53:22',
+            ),
+            102 => 
+            array (
+                'id' => 103,
+                'module_id' => 8,
+                'user_id' => 31,
+                'service_id' => 3,
+                'count' => 5,
+                'is_guest' => 0,
+                'created_at' => '2025-10-12 16:14:18',
+                'updated_at' => '2025-10-12 17:14:29',
+            ),
+            103 => 
+            array (
+                'id' => 104,
+                'module_id' => 8,
+                'user_id' => 31,
+                'service_id' => 6,
+                'count' => 1,
+                'is_guest' => 0,
+                'created_at' => '2025-10-12 16:16:30',
+                'updated_at' => '2025-10-12 16:16:30',
+            ),
+            104 => 
+            array (
+                'id' => 105,
+                'module_id' => 8,
+                'user_id' => 31,
+                'service_id' => 1,
+                'count' => 1,
+                'is_guest' => 0,
+                'created_at' => '2025-10-12 16:46:27',
+                'updated_at' => '2025-10-12 16:46:27',
+            ),
+            105 => 
+            array (
+                'id' => 106,
+                'module_id' => 8,
+                'user_id' => 8,
+                'service_id' => 1,
+                'count' => 2,
+                'is_guest' => 0,
+                'created_at' => '2025-10-13 10:28:39',
+                'updated_at' => '2025-10-13 12:46:15',
+            ),
+            106 => 
+            array (
+                'id' => 107,
+                'module_id' => 8,
+                'user_id' => 475,
+                'service_id' => 7,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-10-13 15:12:51',
+                'updated_at' => '2025-10-13 15:12:51',
+            ),
+            107 => 
+            array (
+                'id' => 108,
+                'module_id' => 8,
+                'user_id' => 475,
+                'service_id' => 2,
+                'count' => 3,
+                'is_guest' => 1,
+                'created_at' => '2025-10-13 15:15:03',
+                'updated_at' => '2025-10-13 15:15:27',
+            ),
+            108 => 
+            array (
+                'id' => 109,
+                'module_id' => 8,
+                'user_id' => 475,
+                'service_id' => 1,
+                'count' => 2,
+                'is_guest' => 1,
+                'created_at' => '2025-10-13 15:15:18',
+                'updated_at' => '2025-10-13 15:15:28',
+            ),
+            109 => 
+            array (
+                'id' => 110,
+                'module_id' => 8,
+                'user_id' => 475,
+                'service_id' => 4,
+                'count' => 1,
+                'is_guest' => 1,
+                'created_at' => '2025-10-13 15:15:28',
+                'updated_at' => '2025-10-13 15:15:28',
+            ),
+        ));
+        
+        
+    }
+}

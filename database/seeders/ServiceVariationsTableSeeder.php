@@ -1,0 +1,686 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+
+class ServiceVariationsTableSeeder extends Seeder
+{
+
+    /**
+     * Auto generated seed file
+     *
+     * @return void
+     */
+    public function run()
+    {
+        
+
+        \DB::table('service_variations')->delete();
+        
+        \DB::table('service_variations')->insert(array (
+            0 => 
+            array (
+                'id' => 28,
+                'module_id' => NULL,
+                'variant' => '500-SFT',
+                'variant_key' => '500-SFT',
+                'service_id' => 3,
+                'zone_id' => 3,
+                'price' => '100.000',
+                'created_at' => '2025-09-04 05:54:21',
+                'updated_at' => '2025-09-04 05:54:21',
+            ),
+            1 => 
+            array (
+                'id' => 29,
+                'module_id' => NULL,
+                'variant' => '500-SFT',
+                'variant_key' => '500-SFT',
+                'service_id' => 3,
+                'zone_id' => 2,
+                'price' => '100.000',
+                'created_at' => '2025-09-04 05:54:21',
+                'updated_at' => '2025-09-04 05:54:21',
+            ),
+            2 => 
+            array (
+                'id' => 30,
+                'module_id' => NULL,
+                'variant' => '500-SFT',
+                'variant_key' => '500-SFT',
+                'service_id' => 3,
+                'zone_id' => 1,
+                'price' => '100.000',
+                'created_at' => '2025-09-04 05:54:21',
+                'updated_at' => '2025-09-04 05:54:21',
+            ),
+            3 => 
+            array (
+                'id' => 31,
+                'module_id' => NULL,
+                'variant' => '1000-SFT',
+                'variant_key' => '1000-SFT',
+                'service_id' => 3,
+                'zone_id' => 3,
+                'price' => '200.000',
+                'created_at' => '2025-09-04 05:54:21',
+                'updated_at' => '2025-09-04 05:54:21',
+            ),
+            4 => 
+            array (
+                'id' => 32,
+                'module_id' => NULL,
+                'variant' => '1000-SFT',
+                'variant_key' => '1000-SFT',
+                'service_id' => 3,
+                'zone_id' => 2,
+                'price' => '200.000',
+                'created_at' => '2025-09-04 05:54:21',
+                'updated_at' => '2025-09-04 05:54:21',
+            ),
+            5 => 
+            array (
+                'id' => 33,
+                'module_id' => NULL,
+                'variant' => '1000-SFT',
+                'variant_key' => '1000-SFT',
+                'service_id' => 3,
+                'zone_id' => 1,
+                'price' => '200.000',
+                'created_at' => '2025-09-04 05:54:21',
+                'updated_at' => '2025-09-04 05:54:21',
+            ),
+            6 => 
+            array (
+                'id' => 34,
+                'module_id' => NULL,
+                'variant' => '5000-SFT',
+                'variant_key' => '5000-SFT',
+                'service_id' => 3,
+                'zone_id' => 3,
+                'price' => '350.000',
+                'created_at' => '2025-09-04 05:54:21',
+                'updated_at' => '2025-09-04 05:54:21',
+            ),
+            7 => 
+            array (
+                'id' => 35,
+                'module_id' => NULL,
+                'variant' => '5000-SFT',
+                'variant_key' => '5000-SFT',
+                'service_id' => 3,
+                'zone_id' => 2,
+                'price' => '350.000',
+                'created_at' => '2025-09-04 05:54:21',
+                'updated_at' => '2025-09-04 05:54:21',
+            ),
+            8 => 
+            array (
+                'id' => 36,
+                'module_id' => NULL,
+                'variant' => '5000-SFT',
+                'variant_key' => '5000-SFT',
+                'service_id' => 3,
+                'zone_id' => 1,
+                'price' => '350.000',
+                'created_at' => '2025-09-04 05:54:21',
+                'updated_at' => '2025-09-04 05:54:21',
+            ),
+            9 => 
+            array (
+                'id' => 37,
+                'module_id' => NULL,
+                'variant' => 'In-2000-SFT',
+                'variant_key' => 'In-2000-SFT',
+                'service_id' => 2,
+                'zone_id' => 3,
+                'price' => '200.000',
+                'created_at' => '2025-09-04 05:54:47',
+                'updated_at' => '2025-09-04 05:54:47',
+            ),
+            10 => 
+            array (
+                'id' => 38,
+                'module_id' => NULL,
+                'variant' => 'In-2000-SFT',
+                'variant_key' => 'In-2000-SFT',
+                'service_id' => 2,
+                'zone_id' => 2,
+                'price' => '200.000',
+                'created_at' => '2025-09-04 05:54:47',
+                'updated_at' => '2025-09-04 05:54:47',
+            ),
+            11 => 
+            array (
+                'id' => 39,
+                'module_id' => NULL,
+                'variant' => 'In-2000-SFT',
+                'variant_key' => 'In-2000-SFT',
+                'service_id' => 2,
+                'zone_id' => 1,
+                'price' => '200.000',
+                'created_at' => '2025-09-04 05:54:47',
+                'updated_at' => '2025-09-04 05:54:47',
+            ),
+            12 => 
+            array (
+                'id' => 40,
+                'module_id' => NULL,
+                'variant' => 'More-than-2000-SFT',
+                'variant_key' => 'More-than-2000-SFT',
+                'service_id' => 2,
+                'zone_id' => 3,
+                'price' => '400.000',
+                'created_at' => '2025-09-04 05:54:47',
+                'updated_at' => '2025-09-04 05:54:47',
+            ),
+            13 => 
+            array (
+                'id' => 41,
+                'module_id' => NULL,
+                'variant' => 'More-than-2000-SFT',
+                'variant_key' => 'More-than-2000-SFT',
+                'service_id' => 2,
+                'zone_id' => 2,
+                'price' => '400.000',
+                'created_at' => '2025-09-04 05:54:47',
+                'updated_at' => '2025-09-04 05:54:47',
+            ),
+            14 => 
+            array (
+                'id' => 42,
+                'module_id' => NULL,
+                'variant' => 'More-than-2000-SFT',
+                'variant_key' => 'More-than-2000-SFT',
+                'service_id' => 2,
+                'zone_id' => 1,
+                'price' => '400.000',
+                'created_at' => '2025-09-04 05:54:47',
+                'updated_at' => '2025-09-04 05:54:47',
+            ),
+            15 => 
+            array (
+                'id' => 55,
+                'module_id' => NULL,
+                'variant' => 'Window clean',
+                'variant_key' => 'Window-clean',
+                'service_id' => 4,
+                'zone_id' => 3,
+                'price' => '51.000',
+                'created_at' => '2025-09-09 11:04:27',
+                'updated_at' => '2025-09-09 11:04:27',
+            ),
+            16 => 
+            array (
+                'id' => 56,
+                'module_id' => NULL,
+                'variant' => 'Window clean',
+                'variant_key' => 'Window-clean',
+                'service_id' => 4,
+                'zone_id' => 2,
+                'price' => '51.000',
+                'created_at' => '2025-09-09 11:04:27',
+                'updated_at' => '2025-09-09 11:04:27',
+            ),
+            17 => 
+            array (
+                'id' => 57,
+                'module_id' => NULL,
+                'variant' => 'Window clean',
+                'variant_key' => 'Window-clean',
+                'service_id' => 4,
+                'zone_id' => 1,
+                'price' => '51.000',
+                'created_at' => '2025-09-09 11:04:27',
+                'updated_at' => '2025-09-09 11:04:27',
+            ),
+            18 => 
+            array (
+                'id' => 58,
+                'module_id' => NULL,
+                'variant' => 'Full house glass clean',
+                'variant_key' => 'Full-house-glass-clean',
+                'service_id' => 4,
+                'zone_id' => 3,
+                'price' => '200.000',
+                'created_at' => '2025-09-09 11:04:27',
+                'updated_at' => '2025-09-09 11:04:27',
+            ),
+            19 => 
+            array (
+                'id' => 59,
+                'module_id' => NULL,
+                'variant' => 'Full house glass clean',
+                'variant_key' => 'Full-house-glass-clean',
+                'service_id' => 4,
+                'zone_id' => 2,
+                'price' => '200.000',
+                'created_at' => '2025-09-09 11:04:27',
+                'updated_at' => '2025-09-09 11:04:27',
+            ),
+            20 => 
+            array (
+                'id' => 60,
+                'module_id' => NULL,
+                'variant' => 'Full house glass clean',
+                'variant_key' => 'Full-house-glass-clean',
+                'service_id' => 4,
+                'zone_id' => 1,
+                'price' => '200.000',
+                'created_at' => '2025-09-09 11:04:27',
+                'updated_at' => '2025-09-09 11:04:27',
+            ),
+            21 => 
+            array (
+                'id' => 61,
+                'module_id' => NULL,
+                'variant' => 'Floor clean',
+                'variant_key' => 'Floor-clean',
+                'service_id' => 5,
+                'zone_id' => 3,
+                'price' => '100.000',
+                'created_at' => '2025-09-09 11:18:45',
+                'updated_at' => '2025-09-09 11:18:45',
+            ),
+            22 => 
+            array (
+                'id' => 62,
+                'module_id' => NULL,
+                'variant' => 'Floor clean',
+                'variant_key' => 'Floor-clean',
+                'service_id' => 5,
+                'zone_id' => 2,
+                'price' => '100.000',
+                'created_at' => '2025-09-09 11:18:46',
+                'updated_at' => '2025-09-09 11:18:46',
+            ),
+            23 => 
+            array (
+                'id' => 63,
+                'module_id' => NULL,
+                'variant' => 'Floor clean',
+                'variant_key' => 'Floor-clean',
+                'service_id' => 5,
+                'zone_id' => 1,
+                'price' => '100.000',
+                'created_at' => '2025-09-09 11:18:46',
+                'updated_at' => '2025-09-09 11:18:46',
+            ),
+            24 => 
+            array (
+                'id' => 64,
+                'module_id' => NULL,
+                'variant' => 'fan service',
+                'variant_key' => 'fan-service',
+                'service_id' => 6,
+                'zone_id' => 3,
+                'price' => '50.000',
+                'created_at' => '2025-09-09 11:28:50',
+                'updated_at' => '2025-09-09 11:28:50',
+            ),
+            25 => 
+            array (
+                'id' => 65,
+                'module_id' => NULL,
+                'variant' => 'fan service',
+                'variant_key' => 'fan-service',
+                'service_id' => 6,
+                'zone_id' => 2,
+                'price' => '50.000',
+                'created_at' => '2025-09-09 11:28:50',
+                'updated_at' => '2025-09-09 11:28:50',
+            ),
+            26 => 
+            array (
+                'id' => 66,
+                'module_id' => NULL,
+                'variant' => 'fan service',
+                'variant_key' => 'fan-service',
+                'service_id' => 6,
+                'zone_id' => 1,
+                'price' => '50.000',
+                'created_at' => '2025-09-09 11:28:50',
+                'updated_at' => '2025-09-09 11:28:50',
+            ),
+            27 => 
+            array (
+                'id' => 67,
+                'module_id' => NULL,
+                'variant' => 'House hold electric service',
+                'variant_key' => 'House-hold-electric-service',
+                'service_id' => 7,
+                'zone_id' => 3,
+                'price' => '5000.000',
+                'created_at' => '2025-09-09 11:32:21',
+                'updated_at' => '2025-09-09 11:32:21',
+            ),
+            28 => 
+            array (
+                'id' => 68,
+                'module_id' => NULL,
+                'variant' => 'House hold electric service',
+                'variant_key' => 'House-hold-electric-service',
+                'service_id' => 7,
+                'zone_id' => 2,
+                'price' => '5000.000',
+                'created_at' => '2025-09-09 11:32:21',
+                'updated_at' => '2025-09-09 11:32:21',
+            ),
+            29 => 
+            array (
+                'id' => 69,
+                'module_id' => NULL,
+                'variant' => 'House hold electric service',
+                'variant_key' => 'House-hold-electric-service',
+                'service_id' => 7,
+                'zone_id' => 1,
+                'price' => '5000.000',
+                'created_at' => '2025-09-09 11:32:21',
+                'updated_at' => '2025-09-09 11:32:21',
+            ),
+            30 => 
+            array (
+                'id' => 70,
+                'module_id' => NULL,
+                'variant' => 'fdssdfsd',
+                'variant_key' => 'fdssdfsd',
+                'service_id' => 8,
+                'zone_id' => 3,
+                'price' => '10.200',
+                'created_at' => '2025-09-17 10:50:52',
+                'updated_at' => '2025-09-17 10:50:52',
+            ),
+            31 => 
+            array (
+                'id' => 71,
+                'module_id' => NULL,
+                'variant' => 'fdssdfsd',
+                'variant_key' => 'fdssdfsd',
+                'service_id' => 8,
+                'zone_id' => 2,
+                'price' => '10.200',
+                'created_at' => '2025-09-17 10:50:52',
+                'updated_at' => '2025-09-17 10:50:52',
+            ),
+            32 => 
+            array (
+                'id' => 72,
+                'module_id' => NULL,
+                'variant' => 'fdssdfsd',
+                'variant_key' => 'fdssdfsd',
+                'service_id' => 8,
+                'zone_id' => 1,
+                'price' => '10.200',
+                'created_at' => '2025-09-17 10:50:52',
+                'updated_at' => '2025-09-17 10:50:52',
+            ),
+            33 => 
+            array (
+                'id' => 97,
+                'module_id' => NULL,
+                'variant' => 'Machine 1',
+                'variant_key' => 'Machine-1',
+                'service_id' => 9,
+                'zone_id' => 3,
+                'price' => '2000.000',
+                'created_at' => '2025-09-22 17:19:06',
+                'updated_at' => '2025-09-22 17:19:06',
+            ),
+            34 => 
+            array (
+                'id' => 98,
+                'module_id' => NULL,
+                'variant' => 'Machine 1',
+                'variant_key' => 'Machine-1',
+                'service_id' => 9,
+                'zone_id' => 2,
+                'price' => '2000.000',
+                'created_at' => '2025-09-22 17:19:06',
+                'updated_at' => '2025-09-22 17:19:06',
+            ),
+            35 => 
+            array (
+                'id' => 99,
+                'module_id' => NULL,
+                'variant' => 'Machine 1',
+                'variant_key' => 'Machine-1',
+                'service_id' => 9,
+                'zone_id' => 1,
+                'price' => '2000.000',
+                'created_at' => '2025-09-22 17:19:06',
+                'updated_at' => '2025-09-22 17:19:06',
+            ),
+            36 => 
+            array (
+                'id' => 100,
+                'module_id' => NULL,
+                'variant' => 'Machine 2',
+                'variant_key' => 'Machine-2',
+                'service_id' => 9,
+                'zone_id' => 3,
+                'price' => '3000.000',
+                'created_at' => '2025-09-22 17:19:06',
+                'updated_at' => '2025-09-22 17:19:06',
+            ),
+            37 => 
+            array (
+                'id' => 101,
+                'module_id' => NULL,
+                'variant' => 'Machine 2',
+                'variant_key' => 'Machine-2',
+                'service_id' => 9,
+                'zone_id' => 2,
+                'price' => '3000.000',
+                'created_at' => '2025-09-22 17:19:06',
+                'updated_at' => '2025-09-22 17:19:06',
+            ),
+            38 => 
+            array (
+                'id' => 102,
+                'module_id' => NULL,
+                'variant' => 'Machine 2',
+                'variant_key' => 'Machine-2',
+                'service_id' => 9,
+                'zone_id' => 1,
+                'price' => '3000.000',
+                'created_at' => '2025-09-22 17:19:06',
+                'updated_at' => '2025-09-22 17:19:06',
+            ),
+            39 => 
+            array (
+                'id' => 103,
+                'module_id' => NULL,
+                'variant' => 'Machine 3',
+                'variant_key' => 'Machine-3',
+                'service_id' => 9,
+                'zone_id' => 3,
+                'price' => '4000.000',
+                'created_at' => '2025-09-22 17:19:06',
+                'updated_at' => '2025-09-22 17:19:06',
+            ),
+            40 => 
+            array (
+                'id' => 104,
+                'module_id' => NULL,
+                'variant' => 'Machine 3',
+                'variant_key' => 'Machine-3',
+                'service_id' => 9,
+                'zone_id' => 2,
+                'price' => '4000.000',
+                'created_at' => '2025-09-22 17:19:06',
+                'updated_at' => '2025-09-22 17:19:06',
+            ),
+            41 => 
+            array (
+                'id' => 105,
+                'module_id' => NULL,
+                'variant' => 'Machine 3',
+                'variant_key' => 'Machine-3',
+                'service_id' => 9,
+                'zone_id' => 1,
+                'price' => '4000.000',
+                'created_at' => '2025-09-22 17:19:06',
+                'updated_at' => '2025-09-22 17:19:06',
+            ),
+            42 => 
+            array (
+                'id' => 118,
+                'module_id' => NULL,
+                'variant' => 'Joel Goff',
+                'variant_key' => 'Joel-Goff',
+                'service_id' => 10,
+                'zone_id' => 1,
+                'price' => '719.000',
+                'created_at' => '2025-09-28 11:05:42',
+                'updated_at' => '2025-09-28 11:05:42',
+            ),
+            43 => 
+            array (
+                'id' => 131,
+                'module_id' => NULL,
+                'variant' => 'In-1200-SFT',
+                'variant_key' => 'In-1200-SFT',
+                'service_id' => 1,
+                'zone_id' => 3,
+                'price' => '50.000',
+                'created_at' => '2025-10-11 10:35:36',
+                'updated_at' => '2025-10-11 10:35:36',
+            ),
+            44 => 
+            array (
+                'id' => 132,
+                'module_id' => NULL,
+                'variant' => 'In-1200-SFT',
+                'variant_key' => 'In-1200-SFT',
+                'service_id' => 1,
+                'zone_id' => 2,
+                'price' => '50.000',
+                'created_at' => '2025-10-11 10:35:36',
+                'updated_at' => '2025-10-11 10:35:36',
+            ),
+            45 => 
+            array (
+                'id' => 133,
+                'module_id' => NULL,
+                'variant' => 'In-1200-SFT',
+                'variant_key' => 'In-1200-SFT',
+                'service_id' => 1,
+                'zone_id' => 1,
+                'price' => '50.000',
+                'created_at' => '2025-10-11 10:35:36',
+                'updated_at' => '2025-10-11 10:35:36',
+            ),
+            46 => 
+            array (
+                'id' => 134,
+                'module_id' => NULL,
+                'variant' => 'In-2000-SFT',
+                'variant_key' => 'In-2000-SFT',
+                'service_id' => 1,
+                'zone_id' => 3,
+                'price' => '200.000',
+                'created_at' => '2025-10-11 10:35:36',
+                'updated_at' => '2025-10-11 10:35:36',
+            ),
+            47 => 
+            array (
+                'id' => 135,
+                'module_id' => NULL,
+                'variant' => 'In-2000-SFT',
+                'variant_key' => 'In-2000-SFT',
+                'service_id' => 1,
+                'zone_id' => 2,
+                'price' => '200.000',
+                'created_at' => '2025-10-11 10:35:36',
+                'updated_at' => '2025-10-11 10:35:36',
+            ),
+            48 => 
+            array (
+                'id' => 136,
+                'module_id' => NULL,
+                'variant' => 'In-2000-SFT',
+                'variant_key' => 'In-2000-SFT',
+                'service_id' => 1,
+                'zone_id' => 1,
+                'price' => '200.000',
+                'created_at' => '2025-10-11 10:35:36',
+                'updated_at' => '2025-10-11 10:35:36',
+            ),
+            49 => 
+            array (
+                'id' => 137,
+                'module_id' => NULL,
+                'variant' => 'In-3000-SFT',
+                'variant_key' => 'In-3000-SFT',
+                'service_id' => 1,
+                'zone_id' => 3,
+                'price' => '350.000',
+                'created_at' => '2025-10-11 10:35:36',
+                'updated_at' => '2025-10-11 10:35:36',
+            ),
+            50 => 
+            array (
+                'id' => 138,
+                'module_id' => NULL,
+                'variant' => 'In-3000-SFT',
+                'variant_key' => 'In-3000-SFT',
+                'service_id' => 1,
+                'zone_id' => 2,
+                'price' => '350.000',
+                'created_at' => '2025-10-11 10:35:36',
+                'updated_at' => '2025-10-11 10:35:36',
+            ),
+            51 => 
+            array (
+                'id' => 139,
+                'module_id' => NULL,
+                'variant' => 'In-3000-SFT',
+                'variant_key' => 'In-3000-SFT',
+                'service_id' => 1,
+                'zone_id' => 1,
+                'price' => '350.000',
+                'created_at' => '2025-10-11 10:35:36',
+                'updated_at' => '2025-10-11 10:35:36',
+            ),
+            52 => 
+            array (
+                'id' => 140,
+                'module_id' => NULL,
+                'variant' => 'In-10000-SFT',
+                'variant_key' => 'In-10000-SFT',
+                'service_id' => 1,
+                'zone_id' => 3,
+                'price' => '2500.000',
+                'created_at' => '2025-10-11 10:35:36',
+                'updated_at' => '2025-10-11 10:35:36',
+            ),
+            53 => 
+            array (
+                'id' => 141,
+                'module_id' => NULL,
+                'variant' => 'In-10000-SFT',
+                'variant_key' => 'In-10000-SFT',
+                'service_id' => 1,
+                'zone_id' => 2,
+                'price' => '2500.000',
+                'created_at' => '2025-10-11 10:35:36',
+                'updated_at' => '2025-10-11 10:35:36',
+            ),
+            54 => 
+            array (
+                'id' => 142,
+                'module_id' => NULL,
+                'variant' => 'In-10000-SFT',
+                'variant_key' => 'In-10000-SFT',
+                'service_id' => 1,
+                'zone_id' => 1,
+                'price' => '2500.000',
+                'created_at' => '2025-10-11 10:35:36',
+                'updated_at' => '2025-10-11 10:35:36',
+            ),
+        ));
+        
+        
+    }
+}
