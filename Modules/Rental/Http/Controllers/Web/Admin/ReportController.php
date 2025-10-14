@@ -919,7 +919,8 @@ class ReportController extends Controller
 
 
         $vehicles = $this->get_provider_sales_data($request)['vehicles'];
-        $vehicles = $vehicles->paginate(config('default_pagination'))->withQueryString();
+        $vehicles = $vehicles->paginate(config('default_pagination'))
+            ->appends(request()->except('page'));
         $trips = $this->get_provider_sales_data($request)['trips'];
 
         // custom filtering for bar chart
@@ -935,9 +936,9 @@ class ReportController extends Controller
                             return $query->where('provider_id', $provider->id);
                         })->select(
                             DB::raw("(sum(trip_amount)) as trip_amount"),
-                            DB::raw("(DATE_FORMAT(schedule_at, '%Y')) as year")
+                            DB::raw("(EXTRACT(YEAR FROM schedule_at)) as year")
                         )
-                        ->groupBy(DB::raw("DATE_FORMAT(schedule_at, '%Y')"))
+                        ->groupBy(DB::raw("EXTRACT(YEAR FROM schedule_at)"))
                         ->get()->toArray();
 
                     $label = array_map(function ($trip) {
@@ -1148,44 +1149,48 @@ class ReportController extends Controller
         $zone = is_numeric($zone_id) ? Zone::findOrFail($zone_id) : null;
         $provider = is_numeric($provider_id) ? Store::findOrFail($provider_id) : null;
 
-        $vehicles = Vehicle::withCount([
-            'tripDetails as trips_count' => function ($query) use ($from, $to, $filter) {
-                $query->whereHas('trip', function ($query) {
-                    return $query->whereIn('trip_status', ['completed']);
-                })->applyDateFilter($filter, $from, $to);
-            },
-            'vehicleIdentities'
-        ])
+        // Base query with trip count subquery
+        $vehicles = Vehicle::select('vehicles.*')
+            ->selectRaw('
+            (SELECT COUNT(*)
+             FROM trip_details
+             INNER JOIN trips ON trips.id = trip_details.trip_id
+             WHERE trip_details.vehicle_id = vehicles.id
+             AND trips.trip_status = ?) as trips_count
+        ', ['completed'])
+            ->withCount('vehicleIdentities')
             ->withSum([
                 'tripDetails' => function ($query) use ($from, $to, $filter) {
-                    $query->whereHas('trip', function ($query) {
-                        return $query->whereIn('trip_status', ['completed']);
+                    $query->whereHas('trip', function ($q) {
+                        $q->where('trip_status', 'completed');
                     })->applyDateFilter($filter, $from, $to);
-                },
+                }
             ], 'quantity')
-
             ->addSelect([
                 'total_discount' => function ($query) use ($from, $to, $filter) {
                     $query->selectRaw('SUM(trip_details.discount_on_trip * trip_details.quantity)')
                         ->from('trip_details')
                         ->join('trips', 'trips.id', '=', 'trip_details.trip_id')
                         ->whereColumn('trip_details.vehicle_id', 'vehicles.id')
-                        ->whereIn('trips.trip_status', ['completed'])
-                        ->when(isset($from) && isset($to) && $from != null && $to != null && $filter == 'custom', function ($query) use ($from, $to) {
-                            return $query->whereBetween('trip_details.created_at', [$from . " 00:00:00", $to . " 23:59:59"]);
+                        ->where('trips.trip_status', 'completed')
+                        ->when(isset($from) && isset($to) && $filter == 'custom', function ($q) use ($from, $to) {
+                            return $q->whereBetween('trip_details.created_at', [$from . " 00:00:00", $to . " 23:59:59"]);
                         })
-                        ->when(isset($filter) && $filter == 'this_year', function ($query) {
-                            return $query->whereYear('trip_details.created_at', now()->format('Y'));
+                        ->when($filter == 'this_year', function ($q) {
+                            return $q->whereYear('trip_details.created_at', now()->format('Y'));
                         })
-                        ->when(isset($filter) && $filter == 'this_month', function ($query) {
-                            return $query->whereMonth('trip_details.created_at', now()->format('m'))
+                        ->when($filter == 'this_month', function ($q) {
+                            return $q->whereMonth('trip_details.created_at', now()->format('m'))
                                 ->whereYear('trip_details.created_at', now()->format('Y'));
                         })
-                        ->when(isset($filter) && $filter == 'previous_year', function ($query) {
-                            return $query->whereYear('trip_details.created_at', date('Y') - 1);
+                        ->when($filter == 'previous_year', function ($q) {
+                            return $q->whereYear('trip_details.created_at', now()->subYear()->format('Y'));
                         })
-                        ->when(isset($filter) && $filter == 'this_week', function ($query) {
-                            return $query->whereBetween('trip_details.created_at', [now()->startOfWeek()->format('Y-m-d H:i:s'), now()->endOfWeek()->format('Y-m-d H:i:s')]); // Filter by this week
+                        ->when($filter == 'this_week', function ($q) {
+                            return $q->whereBetween('trip_details.created_at', [
+                                now()->startOfWeek()->format('Y-m-d H:i:s'),
+                                now()->endOfWeek()->format('Y-m-d H:i:s')
+                            ]);
                         });
                 },
                 'trips_sum_price' => function ($query) use ($from, $to, $filter) {
@@ -1193,24 +1198,27 @@ class ReportController extends Controller
                         ->from('trip_details')
                         ->join('trips', 'trips.id', '=', 'trip_details.trip_id')
                         ->whereColumn('trip_details.vehicle_id', 'vehicles.id')
-                        ->whereIn('trips.trip_status', ['completed'])
-                        ->when(isset($from) && isset($to) && $from != null && $to != null && $filter == 'custom', function ($query) use ($from, $to) {
-                            return $query->whereBetween('trip_details.created_at', [$from . " 00:00:00", $to . " 23:59:59"]);
+                        ->where('trips.trip_status', 'completed')
+                        ->when(isset($from) && isset($to) && $filter == 'custom', function ($q) use ($from, $to) {
+                            return $q->whereBetween('trip_details.created_at', [$from . " 00:00:00", $to . " 23:59:59"]);
                         })
-                        ->when(isset($filter) && $filter == 'this_year', function ($query) {
-                            return $query->whereYear('trip_details.created_at', now()->format('Y'));
+                        ->when($filter == 'this_year', function ($q) {
+                            return $q->whereYear('trip_details.created_at', now()->format('Y'));
                         })
-                        ->when(isset($filter) && $filter == 'this_month', function ($query) {
-                            return $query->whereMonth('trip_details.created_at', now()->format('m'))
+                        ->when($filter == 'this_month', function ($q) {
+                            return $q->whereMonth('trip_details.created_at', now()->format('m'))
                                 ->whereYear('trip_details.created_at', now()->format('Y'));
                         })
-                        ->when(isset($filter) && $filter == 'previous_year', function ($query) {
-                            return $query->whereYear('trip_details.created_at', date('Y') - 1);
+                        ->when($filter == 'previous_year', function ($q) {
+                            return $q->whereYear('trip_details.created_at', now()->subYear()->format('Y'));
                         })
-                        ->when(isset($filter) && $filter == 'this_week', function ($query) {
-                            return $query->whereBetween('trip_details.created_at', [now()->startOfWeek()->format('Y-m-d H:i:s'), now()->endOfWeek()->format('Y-m-d H:i:s')]); // Filter by this week
+                        ->when($filter == 'this_week', function ($q) {
+                            return $q->whereBetween('trip_details.created_at', [
+                                now()->startOfWeek()->format('Y-m-d H:i:s'),
+                                now()->endOfWeek()->format('Y-m-d H:i:s')
+                            ]);
                         });
-                },
+                }
             ])
             ->when(isset($zone), function ($query) use ($zone) {
                 return $query->whereIn('provider_id', $zone->stores->pluck('id'));
@@ -1218,40 +1226,68 @@ class ReportController extends Controller
             ->when(isset($provider), function ($query) use ($provider) {
                 return $query->where('provider_id', $provider->id);
             })
-            ->when(isset($key), function ($query) use ($key) {
+            ->when(!empty($key), function ($query) use ($key) {
                 return $query->where(function ($q) use ($key) {
                     foreach ($key as $value) {
                         $q->orWhere('name', 'like', "%{$value}%");
                     }
                 });
             })
-            ->having('trips_count', '>', 0)
-            ->orderBy('trips_count', 'desc');
+            ->whereExists(function ($query) use ($from, $to, $filter) {
+                $query->select(DB::raw(1))
+                    ->from('trip_details')
+                    ->join('trips', 'trips.id', '=', 'trip_details.trip_id')
+                    ->whereColumn('trip_details.vehicle_id', 'vehicles.id')
+                    ->where('trips.trip_status', 'completed')
+                    ->when(isset($from) && isset($to) && $filter == 'custom', function ($q) use ($from, $to) {
+                        return $q->whereBetween('trip_details.created_at', [$from . " 00:00:00", $to . " 23:59:59"]);
+                    })
+                    ->when($filter == 'this_year', function ($q) {
+                        return $q->whereYear('trip_details.created_at', now()->format('Y'));
+                    })
+                    ->when($filter == 'this_month', function ($q) {
+                        return $q->whereMonth('trip_details.created_at', now()->format('m'))
+                            ->whereYear('trip_details.created_at', now()->format('Y'));
+                    })
+                    ->when($filter == 'previous_year', function ($q) {
+                        return $q->whereYear('trip_details.created_at', now()->subYear()->format('Y'));
+                    })
+                    ->when($filter == 'this_week', function ($q) {
+                        return $q->whereBetween('trip_details.created_at', [
+                            now()->startOfWeek()->format('Y-m-d H:i:s'),
+                            now()->endOfWeek()->format('Y-m-d H:i:s')
+                        ]);
+                    });
+            })
+            ->orderByRaw('(SELECT COUNT(*) FROM trip_details INNER JOIN trips ON trips.id = trip_details.trip_id WHERE trip_details.vehicle_id = vehicles.id AND trips.trip_status = ?) DESC', ['completed']);
 
         $trips = Trips::whereNotIn('trip_status', ['failed', 'canceled'])
-            ->Completed()->with('trip_transaction')->when(isset($zone), function ($query) use ($zone) {
+            ->completed()
+            ->with('trip_transaction')
+            ->when(isset($zone), function ($query) use ($zone) {
                 return $query->whereIn('provider_id', $zone->stores->pluck('id'));
             })
             ->when(isset($provider), function ($query) use ($provider) {
                 return $query->where('provider_id', $provider->id);
             })
-            ->when(isset($from) && isset($to) && $from != null && $to != null && $filter == 'custom', function ($query) use ($from, $to) {
+            ->when(isset($from) && isset($to) && $filter == 'custom', function ($query) use ($from, $to) {
                 return $query->whereBetween('schedule_at', [$from . " 00:00:00", $to . " 23:59:59"]);
             })
-            ->when(isset($filter) && $filter == 'this_year', function ($query) {
+            ->when($filter == 'this_year', function ($query) {
                 return $query->whereYear('schedule_at', now()->format('Y'));
             })
-            ->when(isset($filter) && $filter == 'this_month', function ($query) {
-                return $query->whereMonth('schedule_at', now()->format('m'))->whereYear('schedule_at', now()->format('Y'));
+            ->when($filter == 'this_month', function ($query) {
+                return $query->whereMonth('schedule_at', now()->format('m'))
+                    ->whereYear('schedule_at', now()->format('Y'));
             })
-            ->when(isset($filter) && $filter == 'this_month', function ($query) {
-                return $query->whereMonth('schedule_at', now()->format('m'))->whereYear('schedule_at', now()->format('Y'));
+            ->when($filter == 'previous_year', function ($query) {
+                return $query->whereYear('schedule_at', now()->subYear()->format('Y'));
             })
-            ->when(isset($filter) && $filter == 'previous_year', function ($query) {
-                return $query->whereYear('schedule_at', date('Y') - 1);
-            })
-            ->when(isset($filter) && $filter == 'this_week', function ($query) {
-                return $query->whereBetween('schedule_at', [now()->startOfWeek()->format('Y-m-d H:i:s'), now()->endOfWeek()->format('Y-m-d H:i:s')]);
+            ->when($filter == 'this_week', function ($query) {
+                return $query->whereBetween('schedule_at', [
+                    now()->startOfWeek()->format('Y-m-d H:i:s'),
+                    now()->endOfWeek()->format('Y-m-d H:i:s')
+                ]);
             })
             ->withSum('trip_transaction', 'admin_commission')
             ->withSum('trip_transaction', 'admin_expense')
@@ -1404,7 +1440,15 @@ class ReportController extends Controller
             ->when(isset($filter) && $filter == 'this_week', function ($query) {
                 return $query->whereBetween('schedule_at', [now()->startOfWeek()->format('Y-m-d H:i:s'), now()->endOfWeek()->format('Y-m-d H:i:s')]);
             })
-            ->selectRaw(DB::raw("sum(`trip_amount`) as total_trip_amount, count(*) as trip_count, IF((`payment_method`='cash_payment'), `payment_method`, IF(`payment_method`='wallet',`payment_method`, 'digital_payment')) as 'payment_methods'"))
+            ->selectRaw("
+                SUM(trip_amount) as total_trip_amount,
+                COUNT(*) as trip_count,
+                CASE
+                    WHEN payment_method = 'cash_payment' THEN 'cash_payment'
+                    WHEN payment_method = 'wallet' THEN 'wallet'
+                    ELSE 'digital_payment'
+                END as payment_methods
+            ")
             ->groupBy('payment_methods')
             ->get();
 
@@ -1423,9 +1467,9 @@ class ReportController extends Controller
 
                         ->select(
                             DB::raw("(sum(trip_amount)) as trip_amount"),
-                            DB::raw("(DATE_FORMAT(schedule_at, '%Y')) as year")
+                            DB::raw("(EXTRACT(YEAR FROM schedule_at)) as year")
                         )
-                        ->groupBy(DB::raw("DATE_FORMAT(schedule_at, '%Y')"))
+                        ->groupBy(DB::raw("EXTRACT(YEAR FROM schedule_at)"))
                         ->get()->toArray();
 
                     $label = array_map(function ($trip) {

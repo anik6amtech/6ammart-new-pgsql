@@ -10730,4 +10730,7 @@ Riders can use and share their referral code from app . Deliverymen who register
   'all_rider' => 'All rider',
   'kk' => 'Kk',
   'Trip Cancelation Rate' => 'Trip Cancelation Rate',
+  'This Average Trip Value is calculated from all completed trips' => 'This Average Trip Value is calculated from all completed trips',
+  'Ongoing Trip Rate' => 'Ongoing Trip Rate',
+  'Trip Completion Rate' => 'Trip Completion Rate',
 );
