@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use PhpParser\Node\Expr\Cast;
 
 class Storage extends Model
 {
@@ -15,6 +16,11 @@ class Storage extends Model
         'data_type',
         'data_id',
         'value'
+    ];
+    protected $casts = [
+        'data_type' => 'string',
+        'data_id' => 'integer',
+        'value' => 'string',
     ];
 
     public function data()

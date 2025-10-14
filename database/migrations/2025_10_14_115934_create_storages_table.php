@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('storages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('data_type');
-            $table->string('data_id', 100)->index();
+            $table->integer('data_id')->index();
             $table->string('key')->nullable();
             $table->string('value')->index();
             $table->timestamps();
