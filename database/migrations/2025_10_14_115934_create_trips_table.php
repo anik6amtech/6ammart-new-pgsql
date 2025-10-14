@@ -1,0 +1,74 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('trips', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('provider_id');
+            $table->unsignedBigInteger('zone_id');
+            $table->unsignedBigInteger('module_id');
+            $table->unsignedBigInteger('pickup_zone_id')->nullable();
+            $table->unsignedBigInteger('cash_back_id')->nullable();
+            $table->double('trip_amount', 23, 8)->default(0);
+            $table->double('discount_on_trip', 23, 8)->default(0);
+            $table->enum('discount_on_trip_by', ['admin', 'vendor', 'none'])->default('none');
+            $table->double('coupon_discount_amount', 23, 8)->default(0);
+            $table->enum('coupon_discount_by', ['admin', 'vendor', 'none'])->default('none');
+            $table->string('coupon_code', 100)->nullable();
+            $table->enum('trip_status', ['pending', 'confirmed', 'ongoing', 'completed', 'canceled', 'payment_failed', 'processing', 'waiting'])->default('pending');
+            $table->enum('payment_status', ['paid', 'unpaid', 'partially_paid'])->default('unpaid');
+            $table->string('payment_method', 100)->nullable();
+            $table->string('transaction_reference', 100)->nullable();
+            $table->double('tax_amount', 23, 8)->default(0);
+            $table->enum('tax_status', ['included', 'excluded'])->default('excluded');
+            $table->double('tax_percentage', 23, 8)->default(0);
+            $table->enum('trip_type', ['hourly', 'distance_wise'])->default('hourly');
+            $table->double('additional_charge', 23, 8)->default(0);
+            $table->double('partially_paid_amount', 23, 8)->default(0);
+            $table->double('distance', 23, 8)->default(0);
+            $table->double('estimated_hours', 23, 8)->default(0);
+            $table->double('ref_bonus_amount', 23, 8)->default(0);
+            $table->enum('canceled_by', ['admin', 'vendor', 'user', 'none'])->default('none');
+            $table->string('attachment')->nullable();
+            $table->string('cancellation_reason')->nullable();
+            $table->text('pickup_location')->nullable();
+            $table->text('destination_location')->nullable();
+            $table->text('user_info')->nullable();
+            $table->text('trip_note')->nullable();
+            $table->string('callback')->nullable();
+            $table->string('otp', 100)->nullable();
+            $table->boolean('is_guest')->default(false);
+            $table->boolean('edited')->default(false);
+            $table->boolean('checked')->default(false);
+            $table->boolean('scheduled')->default(false);
+            $table->dateTime('schedule_at')->nullable();
+            $table->dateTime('pending')->nullable();
+            $table->dateTime('confirmed')->nullable();
+            $table->dateTime('ongoing')->nullable();
+            $table->dateTime('completed')->nullable();
+            $table->dateTime('canceled')->nullable();
+            $table->dateTime('payment_failed')->nullable();
+            $table->smallInteger('quantity')->default(1);
+            $table->dateTime('estimated_trip_end_time')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('trips');
+    }
+};

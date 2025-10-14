@@ -12,7 +12,7 @@
         "barryvdh/laravel-dompdf": "^3.1",
         "beyondcode/laravel-websockets": "^1.14",
         "brian2694/laravel-toastr": "^5.54",
-        "doctrine/dbal": "^3.3",
+        "doctrine/dbal": "^3.10",
         "firebase/php-jwt": "^6.4",
         "gregwar/captcha": "^1.1",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -45,6 +45,7 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
         "fakerphp/faker": "^1.9.1",
+        "kitloong/laravel-migrations-generator": "^7.0",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^6.1",
