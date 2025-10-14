@@ -205,23 +205,32 @@ class DashboardController extends Controller
                 return $q->where('users.zone_id', $request['zone_id']);
             })
             ->groupBy('users.id')
-            ->having('trip_count', '>', 0)
+            ->havingRaw('COUNT(trips.id) > 0')
             ->orderBy('trip_count', 'desc')
             ->take(5)
             ->get();
 
 
-        $topProvider = Store::withcount('trips')
+        $query = Store::query()
+            ->select('stores.*')
+            ->selectRaw('(SELECT COUNT(*) FROM trips WHERE trips.provider_id = stores.id ' .
+                (is_numeric($request['zone_id']) ? ' AND trips.zone_id = ' . (int)$request['zone_id'] : '') .
+                ') as trips_count')
             ->when(is_numeric($request['module_id']), function ($q) use ($request) {
                 return $q->where('module_id', $request['module_id']);
             })
-            ->when(is_numeric($request['zone_id']), function ($q) use ($request) {
-                return $q->where('zone_id', $request['zone_id']);
+            ->whereExists(function ($query) use ($request) {
+                $query->select(DB::raw(1))
+                    ->from('trips')
+                    ->whereRaw('trips.provider_id = stores.id')
+                    ->when(is_numeric($request['zone_id']), function ($q) use ($request) {
+                        $q->where('zone_id', $request['zone_id']);
+                    });
             })
-            ->having('trips_count', '>', 0)
             ->orderBy('trips_count', 'desc')
-            ->take(5)
-            ->get();
+            ->take(5);
+
+        $topProvider = $query->get();
 
 
 
