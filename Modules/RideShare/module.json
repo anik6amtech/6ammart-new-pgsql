@@ -1,0 +1,13 @@
+{
+    "name": "RideShare",
+    "alias": "ride-share",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\RideShare\\Providers\\RideShareServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

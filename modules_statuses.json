@@ -1,0 +1,8 @@
+{
+    "Gateways": true,
+    "Rental": true,
+    "Controller": true,
+    "DashboardController": true,
+    "RideShare": true,
+    "Service": true
+}

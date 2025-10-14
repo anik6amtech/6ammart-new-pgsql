@@ -1,0 +1,225 @@
+[
+    {
+        "routeName": "Provider Dashboard",
+        "URI": "provider/dashboard",
+        "keywords": "Service Module Dashboard On Demand Dashboard Monitor Your Ride Sharing Business All Zones Business Analytics All Time Example Text Total Earning Total Subscription Total Service Man Total Booking Served Gross Earnings Earnings Statistics Serviceman List View All No Active Servicemen Are Available Normal Bookings Customize Booking No Recent Bookings Are Available Repeat Welcome Provider Employee Welcome Message Total Earnings",
+        "bladePath": "service::provider/dashboard",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Booking List",
+        "URI": "provider/booking/list",
+        "keywords": "Booking List Attention Please Your Limit To Hold Cash Is Exceeded Your Account Has Been Suspended Until You Pay The Due You Will Not Receive Any New Booking Requests From Now The Service Availability Option Has Been Turned Off You Will Not Receive Any New Booking Requests Until You Turn On The Service Availability Option Go To Settings Booking Request All Booking Regular Booking Repeat Booking Search Here Export Download Options Excel SL Booking ID Booking Date Schedule Date Service Will Be Provided Customer Info Total Amount Payment Status Action Next Upcoming Your Location Customer Location Paid Unpaid Accept Are You Sure To Accept The Booking Request Ignore Once You Ignore The Request It Will Be No Longer On Your Booking Request List Are You Sure To Ignore The Booking Request No Data Available No Data Found",
+        "bladePath": "service::provider/BookingModule/list",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Post List",
+        "URI": "provider/booking/post",
+        "keywords": "Request List Customized Booking Requests All No Bid Request Yet Already Bid Requested Export Download Options Excel Booking ID Customer Info Booking Request Time Service Time Category Provider Offering Action Not Booked Yet Customer Not Available Category Not Available Providers Logo Provider Not Available Price Offered View Details See My Offer Withdraw The Offer Placed Offer Ignore/Reject My Offer Details Description New Booking Request Form Image Away From You Service Requirement Not Available Offer Price Minimum Offer Price Add Your Note Send Your Offer Are You Sure You Want To Ignore This Request You Will Lose The Customer Booking Request Cancel Ignore Are You Sure You Want To Withdraw This Offer You Offer Will Be Removed For The Post Withdraw Offer No Data Available No Data Found",
+        "bladePath": "service::provider/BidModule/list",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Serviceman List",
+        "URI": "provider/serviceman",
+        "keywords": "Serviceman List All Servicemen List Search By Name Export Download Options Excel Add Serviceman Sl Serviceman Info Contact Info Total Bookings Status Action View Edit You Want To Remove This Serviceman Delete Provider No Data Found No Servicemen Found",
+        "bladePath": "service::provider/user-management/serviceman/index",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Serviceman Create",
+        "URI": "provider/serviceman/create",
+        "keywords": "Create New Serviceman General Info Insert The Basic Information Of The Serviceman First Name Last Name Phone Number Ex Logo JPG JPEG PNG Less Than MB Ratio Click To Upload Or Drag And Drop Identity Information Vendor Logo And Covers Identity Type Select Zone Select Identity Type Passport Driving License Nid Trade License Taxpayer Identification Number Tin Type Your User Name Identity Documents Pdf Doc Jpg File Size Max Mb Account Information Insert The Necessary Information To Account Information Email Password Must Contain At Least One Number And One Uppercase And Lowercase Letter And Symbol And At Least Or More Characters Password Not Matched Confirm Password Reset Submit Password Is Valid Password Format Is Invalid Passwords Matched ConfirmPassword Not Match Store Logo & Cover Photos Are Required Store Name Is Required Store Address Is Required You Must Select A Zone Must Click On The Map For Lat/long Tax Is Required You Must Select A Pickup Zone Minimum Delivery Time Is Required Max Delivery Time Is Required First Name Is Required Last Name Is Required Valid Phone Number Is Required Email Is Required Password Is Required Confirm Password Does Not Match Select Pickup Zone Identity Type Is Required Identification Number Is Required Please Only Input Png Or Jpg Type File File Size Too Big",
+        "bladePath": "service::provider/user-management/serviceman/create",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Chat List",
+        "URI": "rovider/message/list",
+        "keywords": "Conversation list All Conversations Search By Name No Conversation Found",
+        "bladePath": "service::provider/user-management/serviceman/chat-list",
+        "isModified": false
+    },
+    {
+        "routeName": "Advertisement List",
+        "URI": "provider/advertisement",
+        "keywords": "Advertisement List Create An Advertisement For Your Targeted Audience As None Has Been Created Yet Create Ads By Creating Advertisement You Can Showcase Your Items Or Store To A Wider Audience Through Targeted Ad Campaigns Ads List New Advertisement Search By Ads ID Search Here All Ads Running Paused Approved Expired Sl Ads ID Ads Title Store Info Ads Type Duration Status Priority Action Expired Expired & Denied Ads Has No Priority N/A View Ads Edit & Resubmit Ads Edit Ads Are You Sure You Want To Resume The Request This Ad Will Be Run Again And Will Show In The User App & Websites Resume Ads Are You Sure You Want To Pause The Request This Ad Will Be Pause And Not Show In The User App & Websites Pause Ads You Can\u2019t Delete The Ad This Advertisement Is Currently Running To Delete This Ad From The List Please Pause The Ad First Once The Status Is Updated You Can Proceed With Deletion Confirm Ad Deletion Deleting This Ad Will Remove It Permanently Are You Sure You Want To Proceed Delete Ads No Data Found",
+        "bladePath": "service::provider/promotion-management/advertisement/list",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Advertisement Create",
+        "URI": "provider/advertisement/create",
+        "keywords": "Create Advertisement Default Advertisement Title Default Exclusive Offer Short Description Get Discount Advertisement Type Video Promotion Store Promotion Validity Select Date Upload Related Files Upload Your Video  Maximum MB Supports MP WEBM MKV Show Review Ratings Review Rating Profile Image Ratio Supports PNG JPG JPEG WEBP Upload Cover Advertisement Preview Your Browser Does Not Support The Video Tag Title Description + Reset Submit",
+        "bladePath": "service::provider/promotion-management/advertisement/create",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Service Subscribed",
+        "URI": "provider/service/subscribed",
+        "keywords": "Available Services Services My Subscriptions All Subscribed Sub Categories Unsubscribed Sub Categories Subcategory List Search By Sub Category Name Search By Id Or Name Export Download Options Excel Icon Excel Csv Icon Csv Sl Subcategory Category Subscribe Unsubscribe N A You Want To Unsubscribe This Category Unsubscribe Category Unsubscribe You Want To Subscribe This Category Subscribe Category Subscribe Subcategory Image Services Available Service Image Variations Unsubscribe From This Category Subscribe To This Category No Data Found",
+        "bladePath": "service::provider/service-management/subscribed-services",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Service Available",
+        "URI": "provider/service/available",
+        "keywords": "Available Services All Services You Want To Unsubscribe This Category Unsubscribe Category Unsubscribe You Want To Subscribe This Category Subscribe Category Subscribe Services Available Variations Unsubscribe From This Category Subscribe To This Category",
+        "bladePath": "service::provider/service-management/available-services",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Service Request List",
+        "URI": "provider/service/request-list",
+        "keywords": "New Service Request All Services Search By Category Export Download Options Excel Csv Send Request SL Category Suggested Service Name Service Description Action Not Available View Feedback Pending Review Service Request Details Title Description Feedback No Request Is Available No Data Found Request For Service Tell Us More About Your Desired Services Suggest More Services That Are Willing To Book And Help Us Make More Efficient Platform For You Select Category Select Your Preferable Category Service Name Shifting Service Type Description Reset Submit",
+        "bladePath": "service::provider/service-management/request-list",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Subscription Detail",
+        "URI": "provider/subscription/subscriber-detail",
+        "keywords": "Subscription Detail Provider Subscription Business Plan Business Details Transactions Subscription Refunds Overview Commission Base Plan Commission Per Order Provider Will Pay Commission To Change Business Plan Subscription Expired Canceled Active Subscription Details Billing Expire Date Total Bill Number Of Uses Package Overview Days Mobile App Review Chat Unlimited Bookings Bookings Left Unlimited Service Category Service Category Scheduled Service Service Request Advertisement Reports And Analytics Bidding If You Cancel The Subscription After Days The You Will No Longer Be Able To Run The Business Before Subscribe A New Plan Cancel Subscription Change / Renew Subscription Plan Chose Subscription Plan Chose A Subscription Packages From The List So That Stores Get More Options To Join The Business For The Growth And Success Change Subscription Plan Renew Or Shift Your Plan To Get Better Experience! Commission Base Current Plan You Want To Migrate To Commission You Will Get To Your Wallet For Remaining Days Subscription Plan Shift In This Plan Days POS Mobile App Chatting Options Review Section Self Delivery Unlimited Trips Unlimited Orders Trips Orders Unlimited Uploads Uploads Renew Are You Sure You Want To Switch To This Plan You Are About To Downgrade Your Plan After Subscribing To This Plan Your Oldest Items Will Be Inactivated Go Back Are You Sure No Yes Successfully Canceled The Subscription Successfully Switched To Commission",
+        "bladePath": "service::provider/provider-management/subscription",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Subscription Refunds",
+        "URI": "provider/subscription/subscriber-wallet-transactions",
+        "keywords": "Subscription Refunds Provider Subscription Refund Transaction Subscription Expired Canceled Active Subscription Details Transactions Subscription Refunds Transaction History All Renewal Migrate To New Plan Purchased Ex Search By Transaction ID Or Store Name Export Download Options Excel Csv Sl Transaction Date Package Name Refund Amount Refunded For Status Days Success No Data Found",
+        "bladePath": "service::provider/provider-management/wallet-transaction",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Provider Config",
+        "URI": "provider/business-settings/provider-setup",
+        "keywords": "Provider Config Settings Service Temporarily Closed Status Basic Settings Vendor Logo And Covers Vat Tax Ex Approximate Service Time Min Minimum Service Time Max Maximum Service Time Minutes Hours Days Instant Booking Repeat Booking Schedule Booking Check The Box If You Want To Add Time Restriction On Schedule Booking Choose Your Service Location Select Service Location Option Go To Customer Location Customer Will Come To My Location Servicemen Permission Select Servicemen Permissions Can Cancel Booking Can Edit Booking Reset Save Changes Daily Time Schedule Create Schedule For Create Schedule Start Time End Time Submit Want To Delete This Schedule If You Select Yes The Time Schedule Will Be Deleted No Yes Schedule Removed Successfully Schedule Added Successfully Schedule Not Found",
+        "bladePath": "service::provider/business-management/provider-config",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Wallet Method List",
+        "URI": "provider/withdraw-method",
+        "keywords": "Provider Wallet Disbursement Method Setup Disbursement Methods Ex Search By Name Add New Method Sl Payment Method Name Payment Info Default Action No Data Found Make Default Method Want To Delete This Method Info Delete Method No Data Found Add Method Select Disburse Method Cancel Submit",
+        "bladePath": "service::provider/wallet-method/index",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Service Get Notification Setting",
+        "URI": "provider/get-notification-setting",
+        "keywords": "Notification Channel Setup From Here You Setup What Types Of Notification You Can Receive From Notification For You Serviceman Sl Topics Push Notification Mail SMS N/A This Notification Turned Off By Admin Turn Off Push Notification For Turn On Push Notification For Want To Enable The Push Notification For Want To Disable The Push Notification For Push Notification Will Be Enabled For Push Notification Will Be Disabled For Turn Off Mail For Turn On Mail For Want To Enable The Mail For Want To Disable The Mail For Mail Will Be Enabled For Mail Will Be Disabled For Turn Off SMS For Turn On SMS For Want To Enable The SMS For Want To Disable The SMS For SMS Will Be Enabled For SMS Will Be Disabled For No Data Found",
+        "bladePath": "service::provider/provider-management/notification-setup",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "My Account",
+        "URI": "provider/my-account",
+        "keywords": "Available Services My Account Edit Details Contact Person Information Business Info Identity Type Identity Image",
+        "bladePath": "service::provider/provider-management/my-account",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "My Reviews",
+        "URI": "provider/my-reviews",
+        "keywords": "Available Services Reviews Excellent Good Average Below Average Poor SL Review ID Reviewer Date Ratings Reply Action Booking ID # Customer Not Available See All No Review Yet No Reply Yet You Don\u2019t Have Any Reviews Yet Review Reply Submit",
+        "bladePath": "service::provider/provider-management/my-reviews",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Service Promotional Costing",
+        "URI": "provider/promotional-costing",
+        "keywords": "Promotional Cost Bearer Available Services Promotional Cost Bearer Currently You Are Bearing The Mentioned Percentage From The Promotional Cost Discount Cost Percentage Campaign Cost Percentage Coupon Cost Percentage",
+        "bladePath": "service::provider/provider-management/promotional-cost",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Report Transaction",
+        "URI": "provider/report/transaction",
+        "keywords": "Transaction Reports Search Data Date Range Date Range All Time This Week Last Week This Month Last Month Last Days This Year Last Year This Year St Quarter This Year Nd Quarter This Year Rd Quarter This Year Th Quarter Custom Date From To Reset Submit Provider Balance Provider Balance Means Total Earning Of Booking Pending Balance Pending Balance Means The Amount Requested For Withdraw To Admin Already Withdrawn Commission Given Total Withdrawn Means The Amount Provider Has Already Withdrawn From Admin Which Was Got From Digitally Paid Booking Account Payable Account Payable Means The Admin Commission For CAS Bookings That Is Yet To Pay Account Receivable Account Receivable Means Booking Earning By Digitally Paid Bookings That Is Yet To Collect From Admin All Debit Credit Total Transactions Search By Transaction ID Export Excel SL Transaction ID Transaction Date Transaction To Balance User Available No Data Found No Transaction Found Select Zone Select Provider",
+        "bladePath": "service::provider/report/transaction",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Report Booking",
+        "URI": "provider/report/booking",
+        "keywords": "Booking Report Booking Reports Search Data Zone Category Sub Category Date Range Date Range All Time This Week Last Week This Month Last Month Last Days This Year Last Year This Year St Quarter This Year Nd Quarter This Year Rd Quarter This Year Th Quarter Custom Date From To Reset Submit Total Bookings Canceled Accepted On Going Completed Total Booking Amount Due Amount Digitally Paid But Yet To Disburse The Amount Already Settled Digitally Paid & Already Disbursed The Amount Booking Statistics Search By Booking ID Booking Status All Export Excel Export Download Options Excel SL Booking ID Customer Info Booking Amount Service Discount Coupon Discount VAT / Tax Action Guest Customer Campaign Data Not Available No Data Found Select Zone Select Provider Select Category Select Sub Category Total Booking Commission",
+        "bladePath": "service::provider/report/booking",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Business Overview",
+        "URI": "provider/report/business/overview",
+        "keywords": "Business Overview Report Business Reports Overview Earning Report Expense Report Search Data Zone Category Sub Category Date Range Date Range All Time This Week Last Week This Month Last Month Last Days This Year Last Year This Year St Quarter This Year Nd Quarter This Year Rd Quarter This Year Th Quarter Custom Date From To Reset Submit Net Profit Total Expense Campaign Normal Discount Coupon Discount Total Tax Collected Earning Statistics Export Excel SL Duration Tax Total Earning Total Expenses Net Profit Rate No Data Found Select Zone Select Category Select Sub Category Earnings Expenses",
+        "bladePath": "service::provider/report/business/overview",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Business Earning",
+        "URI": "provider/report/business/earning",
+        "keywords": "Earning Report Business Reports Overview Expense Report Search Data Zone Category Sub Category Date Range Date Range All Time This Week Last Week This Month Last Month Last Days This Year Last Year This Year St Quarter This Year Nd Quarter This Year Rd Quarter This Year Th Quarter Custom Date From To Reset Submit Net Profit Total Earnings Total Expenses Earning Statistics Search By Booking ID Export Excel SL Booking ID Booking Amount Total Service Discount Provider Paid From Total Coupon Discount Total Campaign Discount Subtotal VAT / Tax Admin Commission Provider Net Income No Data Found Select Zone Select Category Select Sub Category Net Profit Total Earning Total Expense",
+        "bladePath": "service::provider/report/business/earning",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Business Expense",
+        "URI": "provider/report/business/expense",
+        "keywords": "Expense Report Business Reports Overview Earning Report Search Data Zone Category Sub Category Date Range Date Range All Time This Week Last Week This Month Last Month Last Days This Year Last Year This Year St Quarter This Year Nd Quarter This Year Rd Quarter This Year Th Quarter Custom Date From To Reset Submit Total Expenses Normal Service Discount Campaign Discount Coupon Discount Expense Statistics Search By Booking ID Export Excel SL Booking ID Normal Discount Total Expense No Data Found Select Zone Select Category Select Sub Category",
+        "bladePath": "service::provider/report/business/expense",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Wallet List",
+        "URI": "provider/wallet",
+        "keywords": "Provider Wallet Receivable Balance Total Amount Of Payments That You\u2019ll Receive From Admin Cash In Hand Total Amount You\u2019ve Received From The Customer In Cash (Cash After Service) Payable Balance Adjust & Pay Pay Withdraw Able Balance Adjust & Withdraw Withdraw Withdraw Or Payable Balance Adjust Pending Withdraw Already Withdrawn Total Earning SL Provide Note Total Amount Admin Note Requested At Status No Data Found Payment Method Payment With Secured Digital Payment Gateways Select Payment Method Gateway Image Cancel Proceed To Pay Pay Via Online Faster & Secure Way To Pay Bill No Payment Gateway Found Close Proceed Withdraw Request Select Withdraw Method Note Amount Available Balance Minimum Request Amount Maximum Request Amount  Send Withdraw Request",
+        "bladePath": "service::provider/wallet/index",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Custom Role List",
+        "URI": "provider/custom-role/list",
+        "keywords": "Create Role Custom Role Role Form Default Role Name Role Name Example Module Permission Bookings Help & Support Promotion Service User Report & Analytics Business Employees Reset Submit Roles Table Search Role Search Sl# Modules Created At Action Profile Edit Role Want To Delete This Role Delete Role No Data Found",
+        "bladePath": "service::provider/employee-management/custom-role/create",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Employee List",
+        "URI": "provider/employee/list",
+        "keywords": "Employee List Employee List Add New Employee Ex Search By Name Or Email Export Download Options Excel Csv # Name Email Phone Role Action Role Deleted Edit Employee Want To Delete This Role Delete Employee N/A No Data Found",
+        "bladePath": "service::provider/employee-management/employee/list",
+        "moduleType": "service",
+        "isModified": false
+    },
+    {
+        "routeName": "Employee Add New",
+        "URI": "provider/employee/add-new",
+        "keywords": "Employee Add Add New Employee General Information First Name Ex Last Name Phone Role Select Role Employee Image Ratio ( ) Employee Image Size Max MB Choose File Account Information Email Password Must Contain At Least One Number And One Uppercase And Lowercase Letter And Symbol And At Least Or More Characters Confirm Password Reset Submit",
+        "bladePath": "service::provider/employee-management/employee/add-new",
+        "moduleType": "service",
+        "isModified": false
+    }
+]

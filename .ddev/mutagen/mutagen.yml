@@ -1,0 +1,10 @@
+sync:
+  defaults:
+    mode: "two-way-resolved"
+    ignore:
+      vcs: true
+      paths:
+        - node_modules
+        - vendor
+        - storage/framework/cache
+        - storage/logs

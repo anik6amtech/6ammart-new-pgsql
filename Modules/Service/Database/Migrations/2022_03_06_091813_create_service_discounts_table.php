@@ -1,0 +1,49 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateServiceDiscountsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('service_discounts', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('module_id')->nullable();
+            $table->string('discount_title',191)->nullable();
+            $table->string('discount_type',191)->nullable();
+
+            $table->decimal('discount_amount',24,3)->default(0);
+            $table->string('discount_amount_type',191)->default('percent');
+
+            $table->decimal('min_purchase',24,3)->default(0);
+            $table->decimal('max_discount_amount',24,3)->default(0);
+
+            $table->integer('limit_per_user')->default(0);
+            $table->string('promotion_type',191)->default('discount');
+
+            $table->boolean('is_active')->default(0);
+
+            $table->date('start_date')->default(now());
+            $table->date('end_date')->default(now());
+
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('service_discounts');
+    }
+}
