@@ -3,36 +3,257 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\File;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Run all seeders in a directory.
+     * Run all seeders in this directory.
      *
      * @return void
      */
     public function run()
     {
-        // Directory containing all seeders (adjust if needed)
-        $seedersDirectory = database_path('seeders');
+        $this->call(ModuleTypesTableSeeder::class);
+        $this->call(ModuleWiseBannersTableSeeder::class);
+        $this->call(ModuleWiseWhyChoosesTableSeeder::class);
+        $this->call(ModuleZoneTableSeeder::class);
+        $this->call(ModulesTableSeeder::class);
+        $this->call(AccountTransactionsTableSeeder::class);
+        $this->call(AddOnsTableSeeder::class);
+        $this->call(AddonSettingsTableSeeder::class);
+        $this->call(AdminFeaturesTableSeeder::class);
+        $this->call(AdminPromotionalBannersTableSeeder::class);
+        $this->call(AdminRolesTableSeeder::class);
+        $this->call(AdminSpecialCriteriasTableSeeder::class);
+        $this->call(AdminTestimonialsTableSeeder::class);
+        $this->call(AdminWalletsTableSeeder::class);
+        $this->call(AdminsTableSeeder::class);
+        $this->call(AdvertisementsTableSeeder::class);
+        $this->call(AllergiesTableSeeder::class);
+        $this->call(AllergyItemCampaignTableSeeder::class);
+        $this->call(AllergyItemTableSeeder::class);
+        $this->call(AttributesTableSeeder::class);
+        $this->call(AutomatedMessagesTableSeeder::class);
+        $this->call(BannersTableSeeder::class);
+        $this->call(BrandsTableSeeder::class);
+        $this->call(BusinessSettingsTableSeeder::class);
+        $this->call(CacheLocksTableSeeder::class);
+        $this->call(CampaignStoreTableSeeder::class);
+        $this->call(CampaignsTableSeeder::class);
+        $this->call(CartsTableSeeder::class);
+        $this->call(CashBackHistoriesTableSeeder::class);
+        $this->call(CashBacksTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(CommonConditionsTableSeeder::class);
+        $this->call(ContactsTableSeeder::class);
+        $this->call(ConversationsTableSeeder::class);
+        $this->call(CouponsTableSeeder::class);
+        $this->call(CurrenciesTableSeeder::class);
+        $this->call(CustomerAddressesTableSeeder::class);
+        $this->call(DMReviewsTableSeeder::class);
+        $this->call(DMVehiclesTableSeeder::class);
+        $this->call(DataSettingsTableSeeder::class);
+        $this->call(DeliveryHistoriesTableSeeder::class);
+        $this->call(DeliveryManWalletsTableSeeder::class);
+        $this->call(DeliveryMenTableSeeder::class);
+        $this->call(DisbursementDetailsTableSeeder::class);
+        $this->call(DisbursementWithdrawalMethodsTableSeeder::class);
+        $this->call(DisbursementsTableSeeder::class);
+        $this->call(DiscountsTableSeeder::class);
+        $this->call(EcommerceItemDetailsTableSeeder::class);
+        $this->call(EmailTemplatesTableSeeder::class);
+        $this->call(EmailVerificationsTableSeeder::class);
+        $this->call(EmployeeRolesTableSeeder::class);
+        $this->call(ExpensesTableSeeder::class);
+        $this->call(ExternalConfigurationsTableSeeder::class);
+        $this->call(FailedJobsTableSeeder::class);
+        $this->call(FareBiddingsTableSeeder::class);
+        $this->call(FlashSaleItemsTableSeeder::class);
+        $this->call(FlashSalesTableSeeder::class);
+        $this->call(FlutterSpecialCriteriasTableSeeder::class);
+        $this->call(GenericNamesTableSeeder::class);
+        $this->call(GuestsTableSeeder::class);
+        $this->call(ItemCampaignGenericNamesTableSeeder::class);
+        $this->call(ItemCampaignNutritionTableSeeder::class);
+        $this->call(ItemCampaignsTableSeeder::class);
+        $this->call(ItemGenericNamesTableSeeder::class);
+        $this->call(ItemNutritionTableSeeder::class);
+        $this->call(ItemTagTableSeeder::class);
+        $this->call(ItemsTableSeeder::class);
+        $this->call(JobsTableSeeder::class);
+        $this->call(LevelAccessesTableSeeder::class);
+        $this->call(LoyaltyPointTransactionsTableSeeder::class);
+        $this->call(LoyaltyPointsHistoriesTableSeeder::class);
+        $this->call(MessagesTableSeeder::class);
 
-        // Get all PHP files in the directory
-        $files = File::allFiles($seedersDirectory);
-
-        foreach ($files as $file) {
-            $fileName = $file->getFilenameWithoutExtension();
-
-            // Skip this master seeder itself to avoid infinite loop
-            if ($fileName === 'DatabaseSeeder') {
-                continue;
-            }
-
-            // Check if the class exists and then run it
-            $class = "Database\\Seeders\\$fileName";
-            if (class_exists($class)) {
-                $this->call($class);
-            }
-        }
+        $this->call(NewslettersTableSeeder::class);
+        $this->call(NotificationMessagesTableSeeder::class);
+        $this->call(NotificationSettingsTableSeeder::class);
+        $this->call(NotificationsTableSeeder::class);
+        $this->call(NutritionsTableSeeder::class);
+        $this->call(OauthAccessTokensTableSeeder::class);
+        $this->call(OauthAuthCodesTableSeeder::class);
+        $this->call(OauthClientsTableSeeder::class);
+        $this->call(OauthPersonalAccessClientsTableSeeder::class);
+        $this->call(OauthRefreshTokensTableSeeder::class);
+        $this->call(OfflinePaymentMethodsTableSeeder::class);
+        $this->call(OfflinePaymentsTableSeeder::class);
+        $this->call(OrderCancelReasonsTableSeeder::class);
+        $this->call(OrderDeliveryHistoriesTableSeeder::class);
+        $this->call(OrderDetailsTableSeeder::class);
+        $this->call(OrderPaymentsTableSeeder::class);
+        $this->call(OrderReferencesTableSeeder::class);
+        $this->call(OrderTransactionsTableSeeder::class);
+        $this->call(OrdersTableSeeder::class);
+        $this->call(ParcelCategoriesTableSeeder::class);
+        $this->call(ParcelDeliveryInstructionsTableSeeder::class);
+        $this->call(PartialPaymentsTableSeeder::class);
+        $this->call(PasswordResetsTableSeeder::class);
+        $this->call(PaymentRequestsTableSeeder::class);
+        $this->call(PharmacyItemDetailsTableSeeder::class);
+        $this->call(PhoneVerificationsTableSeeder::class);
+        $this->call(PriorityListsTableSeeder::class);
+        $this->call(ProvideDMEarningsTableSeeder::class);
+        $this->call(ProviderEmployeesTableSeeder::class);
+        $this->call(ProviderRolesTableSeeder::class);
+        $this->call(QuestionAnswersTableSeeder::class);
+        $this->call(ReactTestimonialsTableSeeder::class);
+        $this->call(RecentSearchesTableSeeder::class);
+        $this->call(ReferralDriversTableSeeder::class);
+        $this->call(RefundReasonsTableSeeder::class);
+        $this->call(RefundsTableSeeder::class);
+        $this->call(RejectedDriverRequestsTableSeeder::class);
+        $this->call(RentalCartUserDataTableSeeder::class);
+        $this->call(RentalCartsTableSeeder::class);
+        $this->call(RentalEmailTemplatesTableSeeder::class);
+        $this->call(RentalWishlishesTableSeeder::class);
+        $this->call(ReviewsTableSeeder::class);
+        $this->call(RideAppliedCouponsTableSeeder::class);
+        $this->call(RideCancellationReasonsTableSeeder::class);
+        $this->call(RideCouponSetupVehicleCategoryTableSeeder::class);
+        $this->call(RideCouponSetupsTableSeeder::class);
+        $this->call(RideCustomerCouponSetupsTableSeeder::class);
+        $this->call(RideCustomerDiscountSetupsTableSeeder::class);
+        $this->call(RideDiscountSetupsTableSeeder::class);
+        $this->call(RideFaresTableSeeder::class);
+        // $this->call(RideRequestCoordinatesTableSeeder::class);
+        $this->call(RideRequestFeesTableSeeder::class);
+        $this->call(RideRequestTimesTableSeeder::class);
+        // $this->call(RideRequestsTableSeeder::class);
+        $this->call(RideReviewsTableSeeder::class);
+        $this->call(RideRoutesTableSeeder::class);
+        $this->call(RideSafetyAlertReasonsTableSeeder::class);
+        $this->call(RideSafetyAlertsTableSeeder::class);
+        $this->call(RideSafetyPrecautionsTableSeeder::class);
+        $this->call(RideStatusTableSeeder::class);
+        $this->call(RideTransactionsTableSeeder::class);
+        $this->call(RideUserAccountsTableSeeder::class);
+        $this->call(RideVehicleBrandsTableSeeder::class);
+        $this->call(RideVehicleCategoryCouponSetupsTableSeeder::class);
+        $this->call(RideVehicleCategoryDiscountSetupsTableSeeder::class);
+        $this->call(RideVehicleModelsTableSeeder::class);
+        $this->call(RideZoneCouponSetupsTableSeeder::class);
+        $this->call(RideZoneDiscountSetupsTableSeeder::class);
+        $this->call(RiderDetailsTableSeeder::class);
+        $this->call(RiderTimeLogsTableSeeder::class);
+        $this->call(RiderVehicleBrandsTableSeeder::class);
+        $this->call(RiderVehicleCategoriesTableSeeder::class);
+        $this->call(RiderVehicleModelsTableSeeder::class);
+        $this->call(RiderVehiclesTableSeeder::class);
+        $this->call(ServiceAddedToCartsTableSeeder::class);
+        $this->call(ServiceBookingAdditionalInformationTableSeeder::class);
+        $this->call(ServiceBookingDetailsAmountsTableSeeder::class);
+        $this->call(ServiceBookingDetailsTableSeeder::class);
+        $this->call(ServiceBookingIgnoresTableSeeder::class);
+        $this->call(ServiceBookingOfflinePaymentsTableSeeder::class);
+        $this->call(ServiceBookingPartialPaymentsTableSeeder::class);
+        $this->call(ServiceBookingRepeatDetailsTableSeeder::class);
+        $this->call(ServiceBookingRepeatHistoriesTableSeeder::class);
+        $this->call(ServiceBookingRepeatsTableSeeder::class);
+        $this->call(ServiceBookingScheduleHistoriesTableSeeder::class);
+        $this->call(ServiceBookingStatusHistoriesTableSeeder::class);
+        $this->call(ServiceBookingsTableSeeder::class);
+        $this->call(ServiceCampaignsTableSeeder::class);
+        $this->call(ServiceCartsTableSeeder::class);
+        $this->call(ServiceCategoriesTableSeeder::class);
+        $this->call(ServiceCategoryZoneTableSeeder::class);
+        $this->call(ServiceCouponCustomersTableSeeder::class);
+        $this->call(ServiceCouponsTableSeeder::class);
+        $this->call(ServiceDiscountTypesTableSeeder::class);
+        $this->call(ServiceDiscountsTableSeeder::class);
+        $this->call(ServiceFaqsTableSeeder::class);
+        $this->call(ServiceFavoriteProvidersTableSeeder::class);
+        $this->call(ServiceFavoriteServicesTableSeeder::class);
+        $this->call(ServiceIgnoredPostsTableSeeder::class);
+        $this->call(ServicePostAdditionalInformationTableSeeder::class);
+        $this->call(ServicePostAdditionalInstructionsTableSeeder::class);
+        $this->call(ServicePostBidsTableSeeder::class);
+        $this->call(ServicePostsTableSeeder::class);
+        $this->call(ServiceProviderNotificationSetupsTableSeeder::class);
+        $this->call(ServiceProviderSchedulesTableSeeder::class);
+        $this->call(ServiceProviderSettingsTableSeeder::class);
+        $this->call(ServiceProvidersTableSeeder::class);
+        $this->call(ServiceRecentSearchesTableSeeder::class);
+        $this->call(ServiceRecentViewsTableSeeder::class);
+        $this->call(ServiceReviewRepliesTableSeeder::class);
+        $this->call(ServiceReviewsTableSeeder::class);
+        $this->call(ServiceSearchedDataTableSeeder::class);
+        $this->call(ServiceServiceRequestsTableSeeder::class);
+        $this->call(ServiceServicemenTableSeeder::class);
+        $this->call(ServiceServicesTableSeeder::class);
+        $this->call(ServiceSubscribedServicesTableSeeder::class);
+        $this->call(ServiceTagTableSeeder::class);
+        $this->call(ServiceTransactionsTableSeeder::class);
+        $this->call(ServiceVariationsTableSeeder::class);
+        $this->call(ServiceVisitedServicesTableSeeder::class);
+        $this->call(ServiceWithdrawRequestsTableSeeder::class);
+        $this->call(SocialMediaTableSeeder::class);
+        $this->call(SoftCredentialsTableSeeder::class);
+        $this->call(StoragesTableSeeder::class);
+        $this->call(StoreConfigsTableSeeder::class);
+        $this->call(StoreNotificationSettingsTableSeeder::class);
+        $this->call(StoreScheduleTableSeeder::class);
+        $this->call(StoreSubscriptionsTableSeeder::class);
+        $this->call(StoreWalletsTableSeeder::class);
+        $this->call(StoresTableSeeder::class);
+        $this->call(SubscriptionBillingAndRefundHistoriesTableSeeder::class);
+        $this->call(SubscriptionPackagesTableSeeder::class);
+        $this->call(SubscriptionTransactionsTableSeeder::class);
+        $this->call(SupportSavedRepliesTableSeeder::class);
+        $this->call(TagsTableSeeder::class);
+        $this->call(TempProductsTableSeeder::class);
+        $this->call(TempRideNotificationsTableSeeder::class);
+        $this->call(TimeLogsTableSeeder::class);
+        $this->call(TimeTracksTableSeeder::class);
+        $this->call(TrackDeliverymenTableSeeder::class);
+        $this->call(TranslationsTableSeeder::class);
+        $this->call(TripDetailsTableSeeder::class);
+        $this->call(TripTransactionsTableSeeder::class);
+        $this->call(TripVehicleDetailsTableSeeder::class);
+        $this->call(TripsTableSeeder::class);
+        $this->call(UnitsTableSeeder::class);
+        $this->call(UserInfosTableSeeder::class);
+        $this->call(UserLastLocationsTableSeeder::class);
+        $this->call(UserLevelHistoriesTableSeeder::class);
+        $this->call(UserLevelsTableSeeder::class);
+        $this->call(UserNotificationsTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(VehicleBrandsTableSeeder::class);
+        $this->call(VehicleCategoriesTableSeeder::class);
+        $this->call(VehicleDriversTableSeeder::class);
+        $this->call(VehicleIdentitiesTableSeeder::class);
+        $this->call(VehicleReviewsTableSeeder::class);
+        $this->call(VehiclesTableSeeder::class);
+        $this->call(VendorEmployeesTableSeeder::class);
+        $this->call(VendorsTableSeeder::class);
+        $this->call(WalletBonusesTableSeeder::class);
+        $this->call(WalletPaymentsTableSeeder::class);
+        $this->call(WalletTransactionsTableSeeder::class);
+        $this->call(WebsocketsStatisticsEntriesTableSeeder::class);
+        $this->call(WishlistsTableSeeder::class);
+        $this->call(WithdrawRequestsTableSeeder::class);
+        $this->call(WithdrawalMethodsTableSeeder::class);
+        $this->call(ZoneWiseDefaultRideFaresTableSeeder::class);
+        $this->call(ZonesTableSeeder::class);
     }
 }

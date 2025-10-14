@@ -14,12 +14,12 @@ class WithdrawRequestsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('withdraw_requests')->delete();
-        
+
         \DB::table('withdraw_requests')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'vendor_id' => 3,
@@ -35,7 +35,7 @@ class WithdrawRequestsTableSeeder extends Seeder
                 'type' => 'manual',
                 'user_note' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'vendor_id' => 3,
@@ -51,14 +51,14 @@ class WithdrawRequestsTableSeeder extends Seeder
                 'type' => 'manual',
                 'user_note' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'vendor_id' => 3,
                 'admin_id' => NULL,
                 'transaction_note' => NULL,
                 'amount' => '5000.000',
-                'approved' => 2,
+                'approved' => 1,
                 'created_at' => '2022-09-29 15:13:42',
                 'updated_at' => '2022-09-29 15:14:38',
                 'delivery_man_id' => NULL,
@@ -67,7 +67,7 @@ class WithdrawRequestsTableSeeder extends Seeder
                 'type' => 'manual',
                 'user_note' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'vendor_id' => 3,
@@ -83,7 +83,7 @@ class WithdrawRequestsTableSeeder extends Seeder
                 'type' => 'manual',
                 'user_note' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'vendor_id' => 3,
@@ -99,10 +99,10 @@ class WithdrawRequestsTableSeeder extends Seeder
                 'type' => 'manual',
                 'user_note' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
-                'vendor_id' => 2,
+                'vendor_id' => 1,
                 'admin_id' => NULL,
                 'transaction_note' => 'Store_wallet_adjustment_partial',
                 'amount' => '736.360',
@@ -115,7 +115,7 @@ class WithdrawRequestsTableSeeder extends Seeder
                 'type' => 'adjustment',
                 'user_note' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'vendor_id' => NULL,
@@ -131,14 +131,14 @@ class WithdrawRequestsTableSeeder extends Seeder
                 'type' => 'manual',
                 'user_note' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'vendor_id' => NULL,
                 'admin_id' => NULL,
                 'transaction_note' => 'sdgfsdgfsa',
                 'amount' => '11.000',
-                'approved' => 2,
+                'approved' => 1,
                 'created_at' => '2025-10-09 15:17:37',
                 'updated_at' => '2025-10-09 15:18:20',
                 'delivery_man_id' => 9,
@@ -147,7 +147,7 @@ class WithdrawRequestsTableSeeder extends Seeder
                 'type' => 'manual',
                 'user_note' => NULL,
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'vendor_id' => NULL,
@@ -158,13 +158,13 @@ class WithdrawRequestsTableSeeder extends Seeder
                 'created_at' => '2025-10-09 19:42:09',
                 'updated_at' => '2025-10-09 19:42:09',
                 'delivery_man_id' => 1,
-                'withdrawal_method_id' => 2,
+                'withdrawal_method_id' => 1,
                 'withdrawal_method_fields' => '{"account_name":"Ali 123","account_number":"083868658"}',
                 'type' => 'manual',
                 'user_note' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }
