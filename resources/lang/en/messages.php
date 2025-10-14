@@ -10727,4 +10727,6 @@ Riders can use and share their referral code from app . Deliverymen who register
   'business_email_is_required' => 'Business email is required',
   'business_phone_is_required' => 'Business phone is required',
   'translating' => 'Translating',
+  'all_rider' => 'All rider',
+  'kk' => 'Kk',
 );

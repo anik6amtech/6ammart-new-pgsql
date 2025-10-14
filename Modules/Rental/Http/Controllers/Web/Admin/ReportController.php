@@ -43,56 +43,57 @@ class ReportController extends Controller
         $filter = $request->query('filter', 'all_time');
 
 
-        $data=$this->getTransactionData($request);
+        $data = $this->getTransactionData($request);
         $tripTransactions = $data['tripTransactions']->paginate(config('default_pagination'))->withQueryString();
 
         $adminEarned = $data['earnings']->admin_earned;
         $providerEarned =  $data['earnings']->provider_earned;
         $totalAmount =  $data['earnings']->total_amount;
 
-        return view('rental::admin.report.transaction-report', compact('tripTransactions', 'zone', 'provider', 'filter', 'adminEarned', 'providerEarned','key','totalAmount'));
+        return view('rental::admin.report.transaction-report', compact('tripTransactions', 'zone', 'provider', 'filter', 'adminEarned', 'providerEarned', 'key', 'totalAmount'));
     }
 
 
-        private function getTransactionData($request){
+    private function getTransactionData($request)
+    {
 
-            if (session()->has('from_date') == false) {
-                session()->put('from_date', date('Y-m-01'));
-                session()->put('to_date', date('Y-m-30'));
-            }
-            $key = explode(' ', $request['search']);
-            $from = session('from_date');
-            $to = session('to_date');
-            $zone_id = $request->query('zone_id', isset(auth('admin')->user()->zone_id) ? auth('admin')->user()->zone_id : 'all');
-            $zone = is_numeric($zone_id) ? Zone::findOrFail($zone_id) : null;
-            $provider_id = $request->query('provider_id', 'all');
-            $provider = is_numeric($provider_id) ? Store::findOrFail($provider_id) : null;
-            $filter = $request->query('filter', 'all_time');
+        if (session()->has('from_date') == false) {
+            session()->put('from_date', date('Y-m-01'));
+            session()->put('to_date', date('Y-m-30'));
+        }
+        $key = explode(' ', $request['search']);
+        $from = session('from_date');
+        $to = session('to_date');
+        $zone_id = $request->query('zone_id', isset(auth('admin')->user()->zone_id) ? auth('admin')->user()->zone_id : 'all');
+        $zone = is_numeric($zone_id) ? Zone::findOrFail($zone_id) : null;
+        $provider_id = $request->query('provider_id', 'all');
+        $provider = is_numeric($provider_id) ? Store::findOrFail($provider_id) : null;
+        $filter = $request->query('filter', 'all_time');
 
 
-            $tripTransactions = TripTransaction::with('trip', 'trip.trip_details', 'trip.customer', 'trip.provider')->when(isset($zone), function ($query) use ($zone) {
-                return $query->where('zone_id', $zone->id);
+        $tripTransactions = TripTransaction::with('trip', 'trip.trip_details', 'trip.customer', 'trip.provider')->when(isset($zone), function ($query) use ($zone) {
+            return $query->where('zone_id', $zone->id);
+        })
+            ->when(isset($key), function ($query) use ($key) {
+                return $query->where(function ($q) use ($key) {
+                    foreach ($key as $value) {
+                        $q->orWhere('trip_id', 'like', "%{$value}%");
+                    }
+                });
             })
-                ->when(isset($key), function ($query) use ($key) {
-                    return $query->where(function ($q) use ($key) {
-                        foreach ($key as $value) {
-                            $q->orWhere('trip_id', 'like', "%{$value}%");
-                        }
-                    });
-                })
-                ->when(isset($provider), function ($query) use ($provider) {
-                    return $query->where('provider_id', $provider->id);
-                })
-                ->when(request('module_id'), function ($query) {
-                    return $query->module(request('module_id'));
-                })
-                ->applyDateFilter($filter, $from, $to)
-                ->orderBy('created_at', 'desc');
-
-
-            $earnings = TripTransaction::when(isset($zone), function ($query) use ($zone) {
-                return $query->where('zone_id', $zone->id);
+            ->when(isset($provider), function ($query) use ($provider) {
+                return $query->where('provider_id', $provider->id);
             })
+            ->when(request('module_id'), function ($query) {
+                return $query->module(request('module_id'));
+            })
+            ->applyDateFilter($filter, $from, $to)
+            ->orderBy('created_at', 'desc');
+
+
+        $earnings = TripTransaction::when(isset($zone), function ($query) use ($zone) {
+            return $query->where('zone_id', $zone->id);
+        })
             ->when(isset($key), function ($query) use ($key) {
                 return $query->where(function ($q) use ($key) {
                     foreach ($key as $value) {
@@ -114,8 +115,8 @@ class ReportController extends Controller
             )
             ->first();
 
-            return [ 'tripTransactions'=>$tripTransactions, 'earnings'=> $earnings];
-        }
+        return ['tripTransactions' => $tripTransactions, 'earnings' => $earnings];
+    }
 
 
     public function transactionExport(Request $request)
@@ -130,7 +131,7 @@ class ReportController extends Controller
         $provider_id = $request->query('provider_id', 'all');
         $filter = $request->query('filter', 'all_time');
 
-        $data=$this->getTransactionData($request);
+        $data = $this->getTransactionData($request);
         $tripTransactions = $data['tripTransactions']->get();
 
         $adminEarned = $data['earnings']->admin_earned;
@@ -138,16 +139,16 @@ class ReportController extends Controller
         $totalAmount =  $data['earnings']->total_amount;
 
         $data = [
-            'tripTransactions'=>$tripTransactions,
-            'search'=>$request->search??null,
-            'from'=>(($filter == 'custom') && $from)?$from:null,
-            'to'=>(($filter == 'custom') && $to)?$to:null,
-            'zone'=>is_numeric($zone_id)?Helpers::get_zones_name($zone_id):null,
-            'provider'=>is_numeric($provider_id)?Helpers::get_stores_name($provider_id):null,
-            'adminEarned'=>$adminEarned,
-            'providerEarned'=>$providerEarned,
-            'totalAmount'=>$totalAmount,
-            'filter'=>$filter,
+            'tripTransactions' => $tripTransactions,
+            'search' => $request->search ?? null,
+            'from' => (($filter == 'custom') && $from) ? $from : null,
+            'to' => (($filter == 'custom') && $to) ? $to : null,
+            'zone' => is_numeric($zone_id) ? Helpers::get_zones_name($zone_id) : null,
+            'provider' => is_numeric($provider_id) ? Helpers::get_stores_name($provider_id) : null,
+            'adminEarned' => $adminEarned,
+            'providerEarned' => $providerEarned,
+            'totalAmount' => $totalAmount,
+            'filter' => $filter,
         ];
 
         if ($request->type == 'excel') {
@@ -213,10 +214,10 @@ class ReportController extends Controller
                     }
                 });
             })
-//
-//            ->withSum('transaction', 'admin_commission')
-//            ->withSum('transaction', 'admin_expense')
-//            ->withSum('transaction', 'delivery_fee_comission')
+            //
+            //            ->withSum('transaction', 'admin_commission')
+            //            ->withSum('transaction', 'admin_expense')
+            //            ->withSum('transaction', 'delivery_fee_comission')
             ->orderBy('schedule_at', 'desc')->paginate(config('default_pagination'))->withQueryString();
 
         // trip card values calculation
@@ -262,7 +263,7 @@ class ReportController extends Controller
 
         $total_canceled_count = $trips_list->where('trip_status', 'canceled')->count();
         $total_completed_count = $trips_list->where('trip_status', 'completed')->count();
-        $total_progress_count = $trips_list->whereIn('trip_status', ['confirmed','pending'])->count();
+        $total_progress_count = $trips_list->whereIn('trip_status', ['confirmed', 'pending'])->count();
         $total_failed_count = $trips_list->where('trip_status', 'failed')->count();
         $total_ongoing_count = $trips_list->whereIn('trip_status', ['ongoing'])->count();
         return view('rental::admin.report.trip-report', compact('trips', 'trips_list', 'zone', 'provider', 'filter', 'customer', 'total_ongoing_count', 'total_failed_count', 'total_progress_count', 'total_canceled_count', 'total_completed_count'));
@@ -324,21 +325,21 @@ class ReportController extends Controller
                     }
                 });
             })
-//
-//            ->withSum('transaction', 'admin_commission')
-//            ->withSum('transaction', 'admin_expense')
-//            ->withSum('transaction', 'delivery_fee_comission')
+            //
+            //            ->withSum('transaction', 'admin_commission')
+            //            ->withSum('transaction', 'admin_expense')
+            //            ->withSum('transaction', 'delivery_fee_comission')
             ->orderBy('schedule_at', 'desc')->get();
 
         $data = [
-            'trips'=>$trips,
-            'search'=>$request->search??null,
-            'from'=>(($filter == 'custom') && $from)?$from:null,
-            'to'=>(($filter == 'custom') && $to)?$to:null,
-            'zone'=>is_numeric($zone_id)?Helpers::get_zones_name($zone_id):null,
-            'provider'=>is_numeric($provider_id)?Helpers::get_stores_name($provider_id):null,
-            'customer'=>is_numeric($customer_id)?Helpers::get_customer_name($customer_id):null,
-            'filter'=>$filter,
+            'trips' => $trips,
+            'search' => $request->search ?? null,
+            'from' => (($filter == 'custom') && $from) ? $from : null,
+            'to' => (($filter == 'custom') && $to) ? $to : null,
+            'zone' => is_numeric($zone_id) ? Helpers::get_zones_name($zone_id) : null,
+            'provider' => is_numeric($provider_id) ? Helpers::get_stores_name($provider_id) : null,
+            'customer' => is_numeric($customer_id) ? Helpers::get_customer_name($customer_id) : null,
+            'filter' => $filter,
         ];
 
         if ($request->type == 'excel') {
@@ -357,9 +358,16 @@ class ReportController extends Controller
         $provider = is_numeric($provider_id) ? Store::findOrFail($provider_id) : null;
         $category = is_numeric($category_id) ? VehicleCategory::findOrFail($category_id) : null;
         $vehicles = $this->get_vehicle_data($request);
-        $vehicles =  $vehicles->paginate(config('default_pagination'))->withQueryString();
+        $vehicles = $vehicles->paginate(config('default_pagination'))
+            ->appends(request()->except('page'));
 
-        return view('rental::admin.report.vehicle-wise-report', compact('zone', 'provider', 'category', 'vehicles', 'filter'));
+        return view('rental::admin.report.vehicle-wise-report', [
+            'zone' => $zone,
+            'provider' => $provider,
+            'category' => $category,
+            'vehicles' => $vehicles,
+            'filter' => $filter
+        ]);
     }
     public function vehicleReportExport(Request $request)
     {
@@ -378,15 +386,15 @@ class ReportController extends Controller
         $vehicles =  $vehicles->get();
 
         $data = [
-            'vehicles'=>$vehicles,
-            'search'=>$request->search??null,
-            'from'=>(($filter == 'custom') && $from)?$from:null,
-            'to'=>(($filter == 'custom') && $to)?$to:null,
-            'zone'=>is_numeric($zone_id)?Helpers::get_zones_name($zone_id):null,
-            'provider'=>is_numeric($provider_id)?Helpers::get_stores_name($provider_id):null,
-            'category'=>is_numeric($category_id)?Helpers::get_category_name($category_id):null,
-            'module'=>request('module_id')?Helpers::get_module_name(request('module_id')):null,
-            'filter'=>$filter,
+            'vehicles' => $vehicles,
+            'search' => $request->search ?? null,
+            'from' => (($filter == 'custom') && $from) ? $from : null,
+            'to' => (($filter == 'custom') && $to) ? $to : null,
+            'zone' => is_numeric($zone_id) ? Helpers::get_zones_name($zone_id) : null,
+            'provider' => is_numeric($provider_id) ? Helpers::get_stores_name($provider_id) : null,
+            'category' => is_numeric($category_id) ? Helpers::get_category_name($category_id) : null,
+            'module' => request('module_id') ? Helpers::get_module_name(request('module_id')) : null,
+            'filter' => $filter,
         ];
 
         if ($request->type == 'excel') {
@@ -395,7 +403,8 @@ class ReportController extends Controller
             return Excel::download(new VehicleReportExport($data), 'VehicleReport.csv');
         }
     }
-    private static function get_vehicle_data($request){
+    private static function get_vehicle_data($request)
+    {
 
         $key = explode(' ', $request['search']);
         if (session()->has('from_date') == false) {
@@ -413,13 +422,14 @@ class ReportController extends Controller
         $provider = is_numeric($provider_id) ? Store::findOrFail($provider_id) : null;
         $category = is_numeric($category_id) ? VehicleCategory::findOrFail($category_id) : null;
 
-        $vehicles =Vehicle::withCount([
-                'tripDetails as trips_count' => function ($query) use ($from, $to, $filter) {
-                    $query->whereHas('trip', function ($query) {
-                        return $query->whereIn('trip_status', ['completed']);
-                    })->applyDateFilter($filter, $from, $to);
-                }, 'vehicleIdentities'
-            ] )
+        $vehicles = Vehicle::withCount([
+            'tripDetails as trips_count' => function ($query) use ($from, $to, $filter) {
+                $query->whereHas('trip', function ($query) {
+                    return $query->whereIn('trip_status', ['completed']);
+                })->applyDateFilter($filter, $from, $to);
+            },
+            'vehicleIdentities'
+        ])
             ->withSum([
                 'tripDetails' => function ($query) use ($from, $to, $filter) {
                     $query->whereHas('trip', function ($query) {
@@ -497,8 +507,33 @@ class ReportController extends Controller
                 });
             })
             ->with('provider')
-            ->having('trips_count', '>' ,0)
-            ->orderBy('trips_count', 'desc');
+            ->whereExists(function($query) use ($from, $to, $filter) {
+                $query->select(DB::raw(1))
+                    ->from('trip_details')
+                    ->join('trips', 'trips.id', '=', 'trip_details.trip_id')
+                    ->whereColumn('trip_details.vehicle_id', 'vehicles.id')
+                    ->where('trips.trip_status', 'completed')
+                    ->when(isset($from) && isset($to) && $from != null && $to != null && $filter == 'custom', function ($q) use ($from, $to) {
+                        return $q->whereBetween('trip_details.created_at', [$from . " 00:00:00", $to . " 23:59:59"]);
+                    })
+                    ->when(isset($filter) && $filter == 'this_year', function ($q) {
+                        return $q->whereYear('trip_details.created_at', now()->format('Y'));
+                    })
+                    ->when(isset($filter) && $filter == 'this_month', function ($q) {
+                        return $q->whereMonth('trip_details.created_at', now()->format('m'))
+                            ->whereYear('trip_details.created_at', now()->format('Y'));
+                    })
+                    ->when(isset($filter) && $filter == 'previous_year', function ($q) {
+                        return $q->whereYear('trip_details.created_at', date('Y') - 1);
+                    })
+                    ->when(isset($filter) && $filter == 'this_week', function ($q) {
+                        return $q->whereBetween('trip_details.created_at', [
+                            now()->startOfWeek()->format('Y-m-d H:i:s'),
+                            now()->endOfWeek()->format('Y-m-d H:i:s')
+                        ]);
+                    });
+            })
+            ->orderByRaw('(SELECT COUNT(*) FROM trip_details INNER JOIN trips ON trips.id = trip_details.trip_id WHERE trip_details.vehicle_id = vehicles.id AND trips.trip_status = ?) DESC', ['completed']);
 
         return $vehicles;
     }
@@ -511,27 +546,27 @@ class ReportController extends Controller
     public function providerSummaryReport(Request $request)
     {
         $months = array(
-            '"'.translate('Jan').'"',
-            '"'.translate('Feb').'"',
-            '"'.translate('Mar').'"',
-            '"'.translate('Apr').'"',
-            '"'.translate('May').'"',
-            '"'.translate('Jun').'"',
-            '"'.translate('Jul').'"',
-            '"'.translate('Aug').'"',
-            '"'.translate('Sep').'"',
-            '"'.translate('Oct').'"',
-            '"'.translate('Nov').'"',
-            '"'.translate('Dec').'"'
+            '"' . translate('Jan') . '"',
+            '"' . translate('Feb') . '"',
+            '"' . translate('Mar') . '"',
+            '"' . translate('Apr') . '"',
+            '"' . translate('May') . '"',
+            '"' . translate('Jun') . '"',
+            '"' . translate('Jul') . '"',
+            '"' . translate('Aug') . '"',
+            '"' . translate('Sep') . '"',
+            '"' . translate('Oct') . '"',
+            '"' . translate('Nov') . '"',
+            '"' . translate('Dec') . '"'
         );
         $days = array(
-            '"'.translate('Sun').'"',
-            '"'.translate('Mon').'"',
-            '"'.translate('Tue').'"',
-            '"'.translate('Wed').'"',
-            '"'.translate('Thu').'"',
-            '"'.translate('Fri').'"',
-            '"'.translate('Sat').'"'
+            '"' . translate('Sun') . '"',
+            '"' . translate('Mon') . '"',
+            '"' . translate('Tue') . '"',
+            '"' . translate('Wed') . '"',
+            '"' . translate('Thu') . '"',
+            '"' . translate('Fri') . '"',
+            '"' . translate('Sat') . '"'
         );
 
         $key = explode(' ', $request['search']);
@@ -539,8 +574,8 @@ class ReportController extends Controller
         $filter = $request->query('filter', 'all_time');
 
         $providers = Store::with('trips')
-            ->whereHas('vendor',function($query){
-                $query->where('status',1);
+            ->whereHas('vendor', function ($query) {
+                $query->where('status', 1);
             })
             ->withCount('trips')
             ->withModuleType('rental')
@@ -588,9 +623,9 @@ class ReportController extends Controller
             })
             ->orderBy('trips_count', 'DESC')->paginate(config('default_pagination'));
 
-        $new_providers = Store::withModuleType('rental')->whereHas('vendor',function($query){
-                $query->where('status',1);
-            })
+        $new_providers = Store::withModuleType('rental')->whereHas('vendor', function ($query) {
+            $query->where('status', 1);
+        })
             ->applyDateFilter($filter)
             ->count();
 
@@ -687,10 +722,10 @@ class ReportController extends Controller
                 $total_day = now()->daysInMonth;
                 $remaining_days = now()->daysInMonth - 28;
                 $weeks = array(
-                    '"'.translate('Day').' 1-7"',
-                    '"'.translate('Day').' 8-14"',
-                    '"'.translate('Day').' 15-21"',
-                    '"'.translate('Day').' 22-' . $total_day . '"',
+                    '"' . translate('Day') . ' 1-7"',
+                    '"' . translate('Day') . ' 8-14"',
+                    '"' . translate('Day') . ' 15-21"',
+                    '"' . translate('Day') . ' 22-' . $total_day . '"',
                 );
                 for ($i = 1; $i <= 4; $i++) {
                     $monthly_trip[$i] = Trips::Completed()
@@ -720,8 +755,8 @@ class ReportController extends Controller
         $filter = $request->query('filter', 'all_time');
 
         $providers = Store::with('trips')->withCount('trips')
-            ->whereHas('vendor',function($query){
-                $query->where('status',1);
+            ->whereHas('vendor', function ($query) {
+                $query->where('status', 1);
             })
             ->withModuleType('rental')
             ->when(isset($key), function ($query) use ($key) {
@@ -768,9 +803,9 @@ class ReportController extends Controller
             })
             ->orderBy('trips_count', 'DESC')->get();
 
-        $new_providers = Store::withModuleType('rental')->whereHas('vendor',function($query){
-                $query->where('status',1);
-            })
+        $new_providers = Store::withModuleType('rental')->whereHas('vendor', function ($query) {
+            $query->where('status', 1);
+        })
             ->applyDateFilter($filter)->count();
 
         $trip_payment_methods = Trips::when(isset($filter) && $filter == 'this_year', function ($query) {
@@ -813,18 +848,18 @@ class ReportController extends Controller
         $total_completed = $trips->whereIn('trip_status', ['completed'])->count();
 
         $data = [
-            'providers'=>$providers,
-            'search'=>$request->search??null,
-            'new_providers'=>$new_providers,
-            'trips'=>$trips->count(),
-            'total_trip_amount'=>$total_trip_amount,
-            'total_ongoing'=>$total_ongoing,
-            'total_canceled'=>$total_canceled,
-            'total_completed'=>$total_completed,
-            'cash_payments'=>count($trip_payment_methods)>0?\App\CentralLogics\Helpers::number_format_short(isset($trip_payment_methods[0])?$trip_payment_methods[0]->total_trip_amount:0):0,
-            'digital_payments'=>count($trip_payment_methods)>0?\App\CentralLogics\Helpers::number_format_short(isset($trip_payment_methods[1])?$trip_payment_methods[1]->total_trip_amount:0):0,
-            'wallet_payments'=>count($trip_payment_methods)>0?\App\CentralLogics\Helpers::number_format_short(isset($trip_payment_methods[2])?$trip_payment_methods[2]->total_trip_amount:0):0,
-            'filter'=>$filter,
+            'providers' => $providers,
+            'search' => $request->search ?? null,
+            'new_providers' => $new_providers,
+            'trips' => $trips->count(),
+            'total_trip_amount' => $total_trip_amount,
+            'total_ongoing' => $total_ongoing,
+            'total_canceled' => $total_canceled,
+            'total_completed' => $total_completed,
+            'cash_payments' => count($trip_payment_methods) > 0 ? \App\CentralLogics\Helpers::number_format_short(isset($trip_payment_methods[0]) ? $trip_payment_methods[0]->total_trip_amount : 0) : 0,
+            'digital_payments' => count($trip_payment_methods) > 0 ? \App\CentralLogics\Helpers::number_format_short(isset($trip_payment_methods[1]) ? $trip_payment_methods[1]->total_trip_amount : 0) : 0,
+            'wallet_payments' => count($trip_payment_methods) > 0 ? \App\CentralLogics\Helpers::number_format_short(isset($trip_payment_methods[2]) ? $trip_payment_methods[2]->total_trip_amount : 0) : 0,
+            'filter' => $filter,
         ];
         if ($request->type == 'excel') {
             return Excel::download(new ProviderSummaryReportExport($data), 'ProviderSummaryReport.xlsx');
@@ -842,27 +877,27 @@ class ReportController extends Controller
         $to = session('to_date');
 
         $months = array(
-            '"'.translate('Jan').'"',
-            '"'.translate('Feb').'"',
-            '"'.translate('Mar').'"',
-            '"'.translate('Apr').'"',
-            '"'.translate('May').'"',
-            '"'.translate('Jun').'"',
-            '"'.translate('Jul').'"',
-            '"'.translate('Aug').'"',
-            '"'.translate('Sep').'"',
-            '"'.translate('Oct').'"',
-            '"'.translate('Nov').'"',
-            '"'.translate('Dec').'"'
+            '"' . translate('Jan') . '"',
+            '"' . translate('Feb') . '"',
+            '"' . translate('Mar') . '"',
+            '"' . translate('Apr') . '"',
+            '"' . translate('May') . '"',
+            '"' . translate('Jun') . '"',
+            '"' . translate('Jul') . '"',
+            '"' . translate('Aug') . '"',
+            '"' . translate('Sep') . '"',
+            '"' . translate('Oct') . '"',
+            '"' . translate('Nov') . '"',
+            '"' . translate('Dec') . '"'
         );
         $days = array(
-            '"'.translate('Sun').'"',
-            '"'.translate('Mon').'"',
-            '"'.translate('Tue').'"',
-            '"'.translate('Wed').'"',
-            '"'.translate('Thu').'"',
-            '"'.translate('Fri').'"',
-            '"'.translate('Sat').'"'
+            '"' . translate('Sun') . '"',
+            '"' . translate('Mon') . '"',
+            '"' . translate('Tue') . '"',
+            '"' . translate('Wed') . '"',
+            '"' . translate('Thu') . '"',
+            '"' . translate('Fri') . '"',
+            '"' . translate('Sat') . '"'
         );
         $key = isset($request['search']) ? explode(' ', $request['search']) : [];
         $zone_id = $request->query('zone_id', isset(auth('admin')->user()->zone_id) ? auth('admin')->user()->zone_id : 'all');
@@ -874,9 +909,9 @@ class ReportController extends Controller
         // vehicles
 
 
-        $vehicles=$this->get_provider_sales_data($request)['vehicles'];
-        $vehicles= $vehicles->paginate(config('default_pagination'))->withQueryString();
-        $trips=$this->get_provider_sales_data($request)['trips'];
+        $vehicles = $this->get_provider_sales_data($request)['vehicles'];
+        $vehicles = $vehicles->paginate(config('default_pagination'))->withQueryString();
+        $trips = $this->get_provider_sales_data($request)['trips'];
 
         // custom filtering for bar chart
         $monthly_trip = [];
@@ -950,10 +985,10 @@ class ReportController extends Controller
                     $total_day = now()->daysInMonth;
                     $remaining_days = now()->daysInMonth - 28;
                     $weeks = array(
-                        '"'.translate('Day').' 1-7"',
-                        '"'.translate('Day').' 8-14"',
-                        '"'.translate('Day').' 15-21"',
-                        '"'.translate('Day').' 22-' . $total_day . '"',
+                        '"' . translate('Day') . ' 1-7"',
+                        '"' . translate('Day') . ' 8-14"',
+                        '"' . translate('Day') . ' 15-21"',
+                        '"' . translate('Day') . ' 22-' . $total_day . '"',
                     );
                     for ($i = 1; $i <= 4; $i++) {
                         $monthly_trip[$i] = Trips::Completed()->when(isset($zone), function ($query) use ($zone) {
@@ -1069,19 +1104,19 @@ class ReportController extends Controller
         $provider_id = $request->query('provider_id', 'all');
 
 
-        $vehicles=$this->get_provider_sales_data($request)['vehicles'];
-        $vehicles= $vehicles->get();
-        $trips=$this->get_provider_sales_data($request)['trips'];
+        $vehicles = $this->get_provider_sales_data($request)['vehicles'];
+        $vehicles = $vehicles->get();
+        $trips = $this->get_provider_sales_data($request)['trips'];
 
         $data = [
-            'vehicles'=>$vehicles,
-            'trips'=>$trips,
-            'search'=>$request->search??null,
-            'from'=>(($filter == 'custom') && $from)?$from:null,
-            'to'=>(($filter == 'custom') && $to)?$to:null,
-            'zone'=>is_numeric($zone_id)?Helpers::get_zones_name($zone_id):null,
-            'provider'=>is_numeric($provider_id)?Helpers::get_stores_name($provider_id):null,
-            'filter'=>$filter,
+            'vehicles' => $vehicles,
+            'trips' => $trips,
+            'search' => $request->search ?? null,
+            'from' => (($filter == 'custom') && $from) ? $from : null,
+            'to' => (($filter == 'custom') && $to) ? $to : null,
+            'zone' => is_numeric($zone_id) ? Helpers::get_zones_name($zone_id) : null,
+            'provider' => is_numeric($provider_id) ? Helpers::get_stores_name($provider_id) : null,
+            'filter' => $filter,
         ];
         if ($request->type == 'excel') {
             return Excel::download(new ProviderSalesReportExport($data), 'ProviderVehicleReport.xlsx');
@@ -1089,7 +1124,8 @@ class ReportController extends Controller
             return Excel::download(new ProviderSalesReportExport($data), 'ProviderVehicleReport.csv');
         }
     }
-    private static function get_provider_sales_data($request){
+    private static function get_provider_sales_data($request)
+    {
         if (session()->has('from_date') == false) {
             session()->put('from_date', now()->firstOfMonth()->format('Y-m-d'));
             session()->put('to_date', now()->lastOfMonth()->format('Y-m-d'));
@@ -1103,13 +1139,14 @@ class ReportController extends Controller
         $zone = is_numeric($zone_id) ? Zone::findOrFail($zone_id) : null;
         $provider = is_numeric($provider_id) ? Store::findOrFail($provider_id) : null;
 
-        $vehicles =Vehicle::withCount([
+        $vehicles = Vehicle::withCount([
             'tripDetails as trips_count' => function ($query) use ($from, $to, $filter) {
                 $query->whereHas('trip', function ($query) {
                     return $query->whereIn('trip_status', ['completed']);
                 })->applyDateFilter($filter, $from, $to);
-            }, 'vehicleIdentities'
-        ] )
+            },
+            'vehicleIdentities'
+        ])
             ->withSum([
                 'tripDetails' => function ($query) use ($from, $to, $filter) {
                     $query->whereHas('trip', function ($query) {
@@ -1179,7 +1216,7 @@ class ReportController extends Controller
                     }
                 });
             })
-            ->having('trips_count', '>' ,0)
+            ->having('trips_count', '>', 0)
             ->orderBy('trips_count', 'desc');
 
         $trips = Trips::whereNotIn('trip_status', ['failed', 'canceled'])
@@ -1212,7 +1249,7 @@ class ReportController extends Controller
             ->withSum('trip_transaction', 'store_amount')
             ->get();
 
-        return ['vehicles'=> $vehicles , 'trips'=> $trips];
+        return ['vehicles' => $vehicles, 'trips' => $trips];
     }
     public function providerTripReport(Request $request)
     {
@@ -1224,27 +1261,27 @@ class ReportController extends Controller
         $to = session('to_date');
 
         $months = array(
-            '"'.translate('Jan').'"',
-            '"'.translate('Feb').'"',
-            '"'.translate('Mar').'"',
-            '"'.translate('Apr').'"',
-            '"'.translate('May').'"',
-            '"'.translate('Jun').'"',
-            '"'.translate('Jul').'"',
-            '"'.translate('Aug').'"',
-            '"'.translate('Sep').'"',
-            '"'.translate('Oct').'"',
-            '"'.translate('Nov').'"',
-            '"'.translate('Dec').'"'
+            '"' . translate('Jan') . '"',
+            '"' . translate('Feb') . '"',
+            '"' . translate('Mar') . '"',
+            '"' . translate('Apr') . '"',
+            '"' . translate('May') . '"',
+            '"' . translate('Jun') . '"',
+            '"' . translate('Jul') . '"',
+            '"' . translate('Aug') . '"',
+            '"' . translate('Sep') . '"',
+            '"' . translate('Oct') . '"',
+            '"' . translate('Nov') . '"',
+            '"' . translate('Dec') . '"'
         );
         $days = array(
-            '"'.translate('Sun').'"',
-            '"'.translate('Mon').'"',
-            '"'.translate('Tue').'"',
-            '"'.translate('Wed').'"',
-            '"'.translate('Thu').'"',
-            '"'.translate('Fri').'"',
-            '"'.translate('Sat').'"'
+            '"' . translate('Sun') . '"',
+            '"' . translate('Mon') . '"',
+            '"' . translate('Tue') . '"',
+            '"' . translate('Wed') . '"',
+            '"' . translate('Thu') . '"',
+            '"' . translate('Fri') . '"',
+            '"' . translate('Sat') . '"'
         );
 
         $key = isset($request['search']) ? explode(' ', $request['search']) : [];
@@ -1440,10 +1477,10 @@ class ReportController extends Controller
                     $total_day = now()->daysInMonth;
                     $remaining_days = now()->daysInMonth - 28;
                     $weeks = array(
-                        '"'.translate('Day').' 1-7"',
-                        '"'.translate('Day').' 8-14"',
-                        '"'.translate('Day').' 15-21"',
-                        '"'.translate('Day').' 22-' . $total_day . '"',
+                        '"' . translate('Day') . ' 1-7"',
+                        '"' . translate('Day') . ' 8-14"',
+                        '"' . translate('Day') . ' 15-21"',
+                        '"' . translate('Day') . ' 22-' . $total_day . '"',
                     );
                     for ($i = 1; $i <= 4; $i++) {
                         $monthly_trip[$i] = Trips::when(isset($zone), function ($query) use ($zone) {
@@ -1663,18 +1700,18 @@ class ReportController extends Controller
 
 
         $data = [
-            'trips'=>$trips,
-            'total_trips'=>$trips->count(),
-            'total_trip_amount'=>$total_trip_amount,
-            'total_ongoing_count'=>$total_ongoing_count,
-            'total_canceled_count'=>$total_canceled_count,
-            'total_completed_count'=>$total_completed_count,
-            'search'=>$request->search??null,
-            'from'=>(($filter == 'custom') && $from)?$from:null,
-            'to'=>(($filter == 'custom') && $to)?$to:null,
-            'zone'=>is_numeric($zone_id)?Helpers::get_zones_name($zone_id):null,
-            'provider'=>is_numeric($provider_id)?Helpers::get_stores_name($provider_id):null,
-            'filter'=>$filter,
+            'trips' => $trips,
+            'total_trips' => $trips->count(),
+            'total_trip_amount' => $total_trip_amount,
+            'total_ongoing_count' => $total_ongoing_count,
+            'total_canceled_count' => $total_canceled_count,
+            'total_completed_count' => $total_completed_count,
+            'search' => $request->search ?? null,
+            'from' => (($filter == 'custom') && $from) ? $from : null,
+            'to' => (($filter == 'custom') && $to) ? $to : null,
+            'zone' => is_numeric($zone_id) ? Helpers::get_zones_name($zone_id) : null,
+            'provider' => is_numeric($provider_id) ? Helpers::get_stores_name($provider_id) : null,
+            'filter' => $filter,
         ];
         if ($request->type == 'excel') {
             return Excel::download(new ProviderTripReportExport($data), 'ProviderTripReport.xlsx');
@@ -1688,7 +1725,7 @@ class ReportController extends Controller
         $company_email = BusinessSetting::where('key', 'email_address')->first()->value;
         $company_name = BusinessSetting::where('key', 'business_name')->first()->value;
         $company_web_logo = BusinessSetting::where('key', 'logo')->first()->value;
-        $footer_text =BusinessSetting::where(['key' => 'footer_text'])->first()->value;
+        $footer_text = BusinessSetting::where(['key' => 'footer_text'])->first()->value;
 
         $trip_transaction = TripTransaction::with('trip', 'trip.trip_details', 'trip.customer', 'trip.provider')->where('id', $id)->first();
         $data["email"] = $trip_transaction->trip->customer != null ? $trip_transaction->trip->customer["email"] : translate('email_not_found');
@@ -1713,6 +1750,4 @@ class ReportController extends Controller
         Helpers::gen_mpdf(view: $mpdf_view, file_prefix: 'TripInvoice', file_postfix: $id);
         return back();
     }
-
 }
-
