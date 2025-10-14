@@ -10729,4 +10729,5 @@ Riders can use and share their referral code from app . Deliverymen who register
   'translating' => 'Translating',
   'all_rider' => 'All rider',
   'kk' => 'Kk',
+  'Trip Cancelation Rate' => 'Trip Cancelation Rate',
 );

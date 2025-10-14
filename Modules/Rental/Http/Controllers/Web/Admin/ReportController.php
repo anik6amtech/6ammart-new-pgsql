@@ -507,7 +507,7 @@ class ReportController extends Controller
                 });
             })
             ->with('provider')
-            ->whereExists(function($query) use ($from, $to, $filter) {
+            ->whereExists(function ($query) use ($from, $to, $filter) {
                 $query->select(DB::raw(1))
                     ->from('trip_details')
                     ->join('trips', 'trips.id', '=', 'trip_details.trip_id')
@@ -645,7 +645,16 @@ class ReportController extends Controller
                 return $query->whereBetween('schedule_at', [now()->startOfWeek()->format('Y-m-d H:i:s'), now()->endOfWeek()->format('Y-m-d H:i:s')]);
             })
             ->Completed()
-            ->selectRaw(DB::raw("sum(`trip_amount`) as total_trip_amount, count(*) as trip_count, IF((`payment_method`='cash_payment'), `payment_method`, IF(`payment_method`='wallet',`payment_method`, 'digital_payment')) as 'payment_methods'"))->groupBy('payment_methods')
+            ->selectRaw("
+    SUM(trip_amount) as total_trip_amount,
+    COUNT(*) as trip_count,
+    CASE
+        WHEN payment_method = 'cash_payment' THEN 'cash_payment'
+        WHEN payment_method = 'wallet' THEN 'wallet'
+        ELSE 'digital_payment'
+    END as payment_methods
+")
+            ->groupBy('payment_methods')
             ->get();
 
         $trips = Trips::when(isset($filter) && $filter == 'this_year', function ($query) {
@@ -676,10 +685,10 @@ class ReportController extends Controller
             case "all_time":
                 $monthly_trip = Trips::select(
                     DB::raw("(sum(trip_amount)) as trip_amount"),
-                    DB::raw("(DATE_FORMAT(schedule_at, '%Y')) as year")
+                    DB::raw("(EXTRACT(YEAR FROM schedule_at)) as year")
                 )
                     ->Completed()
-                    ->groupBy(DB::raw("DATE_FORMAT(schedule_at, '%Y')"))
+                    ->groupBy(DB::raw("EXTRACT(YEAR FROM schedule_at)"))
                     ->get()->toArray();
 
                 $label = array_map(function ($trip) {
